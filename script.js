@@ -1,3 +1,5 @@
+// Initialize everything when DOM is ready
+const initApp = () => {
 const mobileToggle = document.querySelector('.mobile-toggle');
 const navLinks = document.querySelector('.nav-links');
 const navAnchors = document.querySelectorAll('.nav-links a');
@@ -18,68 +20,152 @@ navAnchors.forEach((link) => {
   });
 });
 
-const projectFilters = document.querySelectorAll('#projects .filter-btn');
-const projectCardElements = document.querySelectorAll('#projects .project-card');
+  // Project filters
+  const projectFilters = document.querySelectorAll('#projects .filter-btn');
+  const projectCardElements = document.querySelectorAll('#projects .project-card');
 
-projectFilters.forEach((btn) => {
-  btn.addEventListener('click', () => {
-    const filter = btn.dataset.filter;
+  console.log(`Found ${projectFilters.length} project filter buttons and ${projectCardElements.length} project cards`);
 
-    projectFilters.forEach((b) => b.classList.remove('active'));
-    btn.classList.add('active');
+  if (projectFilters.length > 0 && projectCardElements.length > 0) {
+    projectFilters.forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const filter = btn.dataset.filter;
+        console.log('Project filter clicked:', filter);
 
-    projectCardElements.forEach((card) => {
-      const { category } = card.dataset;
-      const shouldShow = filter === 'all' || category.includes(filter);
-      card.toggleAttribute('hidden', !shouldShow);
+        projectFilters.forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        projectCardElements.forEach((card) => {
+          const category = card.dataset.category || '';
+          const shouldShow = filter === 'all' || category.includes(filter);
+          if (shouldShow) {
+            card.removeAttribute('hidden');
+          } else {
+            card.setAttribute('hidden', '');
+          }
+        });
+      });
     });
-  });
-});
+  }
 
-const courseFilters = document.querySelectorAll('#skills .filter-btn');
-const courseItems = document.querySelectorAll('.course-list li');
+  // Course filters
+  const courseFilters = document.querySelectorAll('#skills .filter-btn');
+  const courseItems = document.querySelectorAll('.course-list li');
 
-courseFilters.forEach((btn) => {
-  btn.addEventListener('click', () => {
-    const filter = btn.dataset.filter;
+  console.log(`Found ${courseFilters.length} course filter buttons and ${courseItems.length} course items`);
 
-    courseFilters.forEach((b) => b.classList.remove('active'));
-    btn.classList.add('active');
+  if (courseFilters.length > 0 && courseItems.length > 0) {
+    courseFilters.forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const filter = btn.dataset.filter;
+        console.log('Course filter clicked:', filter);
 
-    courseItems.forEach((item) => {
-      const categories = item.dataset.category || '';
-      const shouldShow = filter === 'all' || categories.includes(filter);
-      item.toggleAttribute('hidden', !shouldShow);
+        courseFilters.forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        courseItems.forEach((item) => {
+          const categories = item.dataset.category || '';
+          const shouldShow = filter === 'all' || categories.includes(filter);
+          if (shouldShow) {
+            item.removeAttribute('hidden');
+          } else {
+            item.setAttribute('hidden', '');
+          }
+        });
+      });
     });
-  });
-});
+  }
+};
+
+// Run initialization when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initApp);
+} else {
+  initApp();
+}
 
 const sections = document.querySelectorAll('main section');
-const observer = new IntersectionObserver(
-  (entries) => {
-    const visible = entries
-      .filter((entry) => entry.isIntersecting)
-      .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-    if (visible.length > 0) {
-      const id = visible[0].target.getAttribute('id');
-      navAnchors.forEach((link) => {
-        link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
-      });
+const updateActiveNav = () => {
+  const navAnchors = document.querySelectorAll('.nav-links a');
+  if (!navAnchors || navAnchors.length === 0) return;
+  
+  const headerOffset = 100; // Account for fixed header
+  let currentSection = null;
+  let minDistance = Infinity;
+
+  sections.forEach((section) => {
+    const rect = section.getBoundingClientRect();
+    const sectionTop = rect.top;
+    
+    // Check if section is in viewport and above the middle of the screen
+    if (sectionTop <= headerOffset + 100 && rect.bottom > headerOffset) {
+      const distance = Math.abs(sectionTop - headerOffset);
+      if (distance < minDistance) {
+        minDistance = distance;
+        currentSection = section;
+      }
     }
+  });
+
+  // If no section found with the above logic, find the one with most visibility
+  if (!currentSection) {
+    sections.forEach((section) => {
+      const rect = section.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        const visibleHeight = Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0);
+        const ratio = visibleHeight / rect.height;
+        if (ratio > 0.2 && (!currentSection || ratio > minDistance)) {
+          minDistance = ratio;
+          currentSection = section;
+        }
+      }
+    });
+  }
+
+  if (currentSection) {
+    const id = currentSection.getAttribute('id');
+    navAnchors.forEach((link) => {
+      link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+    });
+  }
+};
+
+// Update on scroll
+window.addEventListener('scroll', updateActiveNav);
+// Update on load
+updateActiveNav();
+
+// Also use IntersectionObserver as backup
+const observer = new IntersectionObserver(
+  () => {
+    updateActiveNav();
   },
   {
-    threshold: 0.5,
+    threshold: [0, 0.1, 0.3, 0.5],
+    rootMargin: '-100px 0px -40% 0px',
   }
 );
 
 sections.forEach((section) => observer.observe(section));
 
+// Modal functionality
+const initModals = () => {
 const projectCardsInteractive = document.querySelectorAll('.project-card[data-modal]');
 const modals = document.querySelectorAll('.project-modal');
 
+  if (projectCardsInteractive.length === 0) {
+    return;
+  }
+
 const openModal = (id) => {
   const modal = document.getElementById(id);
-  if (!modal) return;
+    if (!modal) {
+      return;
+    }
   modal.classList.add('open');
   document.body.classList.add('modal-open');
   const closeBtn = modal.querySelector('.modal-close');
@@ -95,6 +181,9 @@ const closeModal = (modal) => {
 
 projectCardsInteractive.forEach((card) => {
   const modalId = card.dataset.modal;
+    if (!modalId) {
+      return;
+    }
   card.addEventListener('click', () => {
     openModal(modalId);
   });
@@ -130,6 +219,14 @@ document.addEventListener('keydown', (event) => {
     });
   }
 });
+};
+
+// Initialize modals when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initModals);
+} else {
+  initModals();
+}
 
 const translations = {
   en: {
@@ -146,11 +243,13 @@ const translations = {
     'hero.languages': 'French · English · Spanish',
     'about.title': 'About',
     'about.paragraph1':
-      'I’m a Microengineering graduate from EPFL with a focus on robotics, control, and applied machine learning. From predictive maintenance models for AXPO’s industrial valve fleet to high-frequency trading analytics, I build systems where data and hardware converge to deliver measurable performance.',
+      "I'm a Microengineering graduate from EPFL with a focus on robotics, control, microfabrication and applied machine learning. My work spans deep learning models for content moderation, reinforcement learning systems for power grid analysis, and predictive maintenance solutions for industrial equipment. I build systems where data and hardware converge to deliver measurable performance.",
     'about.paragraph2':
-      'My portfolio spans autonomous mechatronic rigs, embedded wearables, and simulation-heavy software. Projects such as the DYNABAL dynamometer, self-regulating ski jacket, wireless sensor networks, and FPGA-based interfaces reflect hands-on experience moving from CAD and PCB design through fabrication, testing, and deployment.',
+      'My portfolio covers autonomous mobile robotics with SLAM and navigation, embedded systems from FPGA logic to microcontroller applications, and mechanical design from mechanism synthesis to cleanroom microfabrication. Projects such as the Dynabal dynamometer, E-Puck2 surveillance robot, autonomous highway MPC controller, and nanofluidic diamond devices reflect hands-on experience moving from CAD and PCB design through fabrication, testing, and deployment.',
     'about.paragraph3':
-      'I thrive in multidisciplinary teams—aligning robotics labs, finance analysts, and manufacturing workshops. Whether mentoring robotics projects, leading cleanroom builds, or turning deep-learning research into actionable dashboards, I translate complex constraints into clear plans that keep teams shipping resilient products.',
+      'I thrive in multidisciplinary teams, collaborating with industry partners like AXPO on predictive maintenance, working in cleanroom environments for microfabrication, and developing full-stack applications from React Native mobile apps to C++ simulators. Whether implementing transformer models for NLP tasks, designing control algorithms for autonomous systems, or optimizing cleanroom processes, I translate complex technical constraints into clear, executable plans.',
+    'about.paragraph4':
+      'I have a strong interest and expertise in cleanroom microfabrication, mastering a wide range of equipment and processes. My hands-on experience includes surface activation systems (Tepla300, Tepla Giga-batch), coating and lithography tools (Sawatec SM-150, SM-200), dry and wet etching techniques, evaporation systems (EVA760 Z11), and dicing equipment (Disco DAD 321/3221). I\'m skilled at optimizing process parameters, troubleshooting fabrication issues, and ensuring high-quality device yields in cleanroom environments.',
     'ongoing.title': 'Ongoing Projects',
     'badge.ongoing': 'Project Still Ongoing',
     'projects.title': 'Projects',
@@ -161,52 +260,52 @@ const translations = {
     'projects.filter.personal': 'Personal',
     'projects.vocy.title': 'Vocy Vocabulary Companion',
     'projects.vocy.description':
-      'Mobile-first language companion with a structured spaced-repetition track and an AI discovery feed that suggests idioms, slang, and domain vocabulary based on learner interests.',
+      'AI-driven language learning app with spaced repetition.',
     'projects.ml4pm.title': 'ML for Predictive Maintenance',
     'projects.ml4pm.description':
-      'Machine learning system in collaboration with AXPO to detect anomalies in ball valve operations for industrial maintenance, targeting proactive interventions.',
+      'Industrial valve anomaly detection.',
     'projects.nano.title': 'Nanofluidic Diamond Device',
     'projects.nano.description':
-      'Semester research developing aluminium-backed diamond nanofluidic devices with improved fabrication steps, focusing on surface activation and bonding quality.',
+      'Cleanroom device optimization.',
     'projects.religious.title': 'Religious Hate Speech Detection',
     'projects.religious.description':
-      'Lightweight transformer ensemble evaluating multilingual religious hate speech and surfacing moderation insights while balancing accuracy, recall, and deployment cost.',
+      'AI-powered content moderation detecting religious hate speech across multiple languages.',
     'projects.epuck.title': 'E-Puck2 Surveillance Robot',
     'projects.epuck.description':
-      'Embedded security platform on the e-puck2 that patrols, detects intrusions, and emits alarms using onboard sensing, behaviour states, and autonomous navigation loops.',
+      'Autonomous security robot patrolling and detecting intrusions in real-time.',
     'projects.fpga.title': 'FPGA Alarm Clock',
     'projects.fpga.description':
-      'Digital logic alarm clock implementing setup, countdown, and audible alerts on DE-10 Lite hardware with debounced inputs and finite state control.',
+      'Hardware alarm clock built entirely in digital logic.',
     'projects.rotary.title': 'Rotary Dimmer Reverse Engineering',
     'projects.rotary.description':
-      'Manufacturing teardown of a rotary dimmer switch covering material analysis, tolerances, and a full process plan to reproduce the assembly with EPFL lab equipment.',
+      'Complete manufacturing analysis and reproduction plan.',
     'projects.orange.title': 'Orange Juice Press Mechanism',
     'projects.orange.description':
-      'Multi-link press engineered for ergonomic leverage, finite-element validated components, and a build plan spanning machining, assembly, and safety assessment.',
+      'Ergonomic multi-link press mechanism with FEA validation.',
     'projects.dynabal.title': 'Dynabal Balanced Dynamometer',
     'projects.dynabal.description':
-      'Compliant dynamometer concept capturing torque on flexible shafts with modular bearings, preload compensation, and instrumentation interfaces.',
+      'Compliant torque measurement system for flexible shafts.',
     'projects.mario.title': 'Homemade Mario LED Matrix Game',
     'projects.mario.description':
-      'ATmega128-based platform recreating Mario gameplay on an 8×8 LED matrix with custom drivers, sound, and controller logic coded in embedded C.',
+      'Classic Mario gameplay recreated on embedded hardware.',
     'projects.mobileRobotics.title': 'Autonomous Mobile Robotics Stack',
     'projects.mobileRobotics.description':
-      'Thymio-II robotics stack integrating computer vision, global and local navigation, motion control, and Kalman filtering for autonomous indoor routing demos.',
+      'Full autonomy stack with SLAM, navigation, and control.',
     'projects.mpc.title': 'Autonomous Highway MPC',
     'projects.mpc.description':
-      'Model predictive control pipeline for highway driving that optimises lane keeping, speed profiles, and constraint handling under dynamic traffic scenarios.',
+      'Predictive control for safe highway driving.',
     'projects.planetDonut.title': 'Planet Donut Resource Simulator',
     'projects.planetDonut.description':
-      'C++ resource management simulator coordinating mining and logistics robots with reinforcement learning policies to maximise colony resilience.',
+      'RL-powered resource management simulator.',
     'projects.rlBenchmark.title': 'Deep RL Algorithm Benchmark',
     'projects.rlBenchmark.description':
-      'Comparative study of DQN, PPO, SAC, and TD3 across classic control environments with learning curves, hyperparameter sweeps, and stability analysis.',
+      'Comprehensive comparison of modern RL algorithms.',
     'projects.powerGrid.title': 'Power Grid Vulnerability Analysis',
     'projects.powerGrid.description':
-      'Semester thesis using reinforcement learning contingency search to expose weak points in national power grids and recommend risk mitigation strategies.',
+      'RL-based risk assessment for power grids.',
     'projects.pitot.title': 'Wireless Pitot Probe Platform',
     'projects.pitot.description':
-      'Wireless sensor suite that logs airflow via a Pitot probe, performs onboard calibration, and streams data for aerodynamic diagnostics in the lab.',
+      'Wireless airflow measurement for aerodynamics.',
     'modal.common.viewRepo': 'View Repository',
     'modal.common.downloadReport': 'Download Report',
     'modal.religious.title': 'Religious Hate Speech Detection',
@@ -237,36 +336,6 @@ const translations = {
     'modal.vocy.learning1': 'Product discovery and retention analytics for consumer apps',
     'modal.vocy.learning2': 'Prompt engineering for contextual vocabulary recommendations',
     'modal.vocy.learning3': 'Privacy-aware data pipelines for multilingual learning progress',
-    'modal.common.viewRepo': 'Voir le dépôt',
-    'modal.common.downloadReport': 'Télécharger le rapport',
-    'modal.religious.title': 'Détection de discours haineux religieux',
-    'modal.religious.subtitle': 'Printemps 2025 · Deep Learning (EE-559)',
-    'modal.religious.tagline':
-      'Ensemble de transformeurs légers capables de signaler le discours haineux religieux multilingue en équilibrant rappel, précision et coût de déploiement.',
-    'modal.religious.assignmentTitle': 'Mandat',
-    'modal.religious.assignment':
-      "Concevoir et comparer des architectures de transformeurs compactes pour détecter le discours haineux religieux dans des textes sociaux bruités. Le modèle devait généraliser en anglais, français, allemand et espagnol tout en restant explicable pour les équipes de modération.",
-    'modal.religious.solutionTitle': 'Solution',
-    'modal.religious.solution':
-      "Comparaison de six variantes légères (DistilBERT, ALBERT, ELECTRA, RoBERTa, BERT-Tiny, MobileBERT) avec réglage Optuna. Combinaison d’augmentation de données, rééquilibrage des classes et embeddings multilingues pour atteindre 95 % de rappel en contexte à faible données. Déploiement du meilleur modèle dans une interface de modération Gradio.",
-    'modal.religious.toolsTitle': 'Outils & compétences',
-    'modal.religious.tools1': 'Python, Hugging Face Transformers, Optuna, Gradio, Docker',
-    'modal.religious.tools2': "Prétraitement multilingue, IA explicable, suivi des modèles",
-    'modal.religious.tools3': 'Considérations éthiques pour les workflows de modération',
-    'modal.vocy.title': 'Vocy, compagnon de vocabulaire',
-    'modal.vocy.subtitle': 'Projet personnel · En cours',
-    'modal.vocy.tagline':
-      'Application mobile pour accélérer l’apprentissage des langues via une répétition espacée structurée et un flux de découverte piloté par l’IA selon les intérêts du learner.',
-    'modal.vocy.conceptTitle': 'Concept',
-    'modal.vocy.concept':
-      'Conçue pour les ingénieurs pressés qui apprennent une nouvelle langue. Le mode apprentissage planifie les révisions avec un espacement adaptatif, tandis que le mode découverte exploite un agent LLM pour proposer expressions, argot et vocabulaire métier sélectionné.',
-    'modal.vocy.implementationTitle': 'Implémentation',
-    'modal.vocy.implementation':
-      'Développement en React Native avec synchronisation Supabase et microservice de recommandation propulsé par OpenAI. Ajout de la pratique de prononciation via reconnaissance vocale et tableaux de bord de progression quotidienne, hebdomadaire et cumulée.',
-    'modal.vocy.learningTitle': 'Ce que j’apprends',
-    'modal.vocy.learning1': 'Product discovery et analyse de rétention pour applications grand public',
-    'modal.vocy.learning2': 'Conception de prompts pour recommandations lexicales contextualisées',
-    'modal.vocy.learning3': 'Pipelines de données respectueux de la vie privée pour le suivi multilingue',
     'tags.personalProject': 'personal project',
     'tags.ai': 'ai',
     'tags.languageLearning': 'language learning',
@@ -369,190 +438,11 @@ const translations = {
     'contact.github': 'GitHub',
     'footer.copy': '© 2025 Benjamin Bahurel. All rights reserved.',
   },
-  fr: {
-    'nav.home': 'Accueil',
-    'nav.about': 'À propos',
-    'nav.ongoing': 'En cours',
-    'nav.projects': 'Projets',
-    'nav.skills': 'Compétences',
-    'nav.contact': 'Contact',
-    'nav.email': 'E-mail',
-    'nav.resume': 'CV',
-    'hero.name': 'Benjamin Bahurel',
-    'hero.tagline': 'Ingénieur en microtechnique, robotique et apprentissage automatique',
-    'hero.languages': 'Français · Anglais · Espagnol',
-    'about.title': 'À propos',
-    'about.paragraph1':
-      "Je suis diplômé en microtechnique de l'EPFL, spécialisé en robotique, contrôle et intelligence artificielle appliquée. Des modèles de maintenance prédictive pour la flotte de vannes d'AXPO aux analyses de trading haute fréquence, je conçois des systèmes où données et matériel se rejoignent pour générer de la performance mesurable.",
-    'about.paragraph2':
-      "Mon portfolio couvre des bancs mécatroniques autonomes, des dispositifs embarqués et des logiciels intensifs en simulation. Des projets comme le dynamomètre DYNABAL, la veste auto-régulée, les réseaux de capteurs sans fil ou les interfaces FPGA reflètent une expérience concrète du design CAD et PCB jusqu'à la fabrication, les tests et le déploiement.",
-    'about.paragraph3':
-      "Je m'épanouis au sein d'équipes multidisciplinaires—entre laboratoires de robotique, analystes financiers et ateliers de fabrication. Que ce soit pour encadrer des projets de robotique, piloter des lots en salle blanche ou transformer des recherches en IA en tableaux de bord exploitables, je convertis les contraintes complexes en plans clairs qui permettent de livrer des produits robustes.",
-    'ongoing.title': 'Projets en cours',
-    'badge.ongoing': 'Projet en cours',
-    'projects.title': 'Projets',
-    'projects.filter.all': 'Tous',
-    'projects.filter.software': 'Logiciel',
-    'projects.filter.hardware': 'Hardware',
-    'projects.filter.mechanical': 'Mécanique',
-    'projects.filter.personal': 'Personnel',
-    'projects.vocy.title': 'Vocy, compagnon de vocabulaire',
-    'projects.vocy.description':
-      "Application mobile pour accélérer l'apprentissage des langues grâce à une révision espacée structurée et un flux de découverte piloté par l'IA qui suggère expressions, idiomes et vocabulaire métier.",
-    'projects.ml4pm.title': 'Maintenance prédictive par ML',
-    'projects.ml4pm.description':
-      "Système de machine learning mené avec AXPO pour détecter les anomalies des vannes à bille industrielles et anticiper les interventions de maintenance.",
-    'projects.nano.title': 'Dispositif nanofluidique en diamant',
-    'projects.nano.description':
-      "Projet de semestre visant à optimiser le procédé salle blanche d’un dispositif nanofluidique en diamant, avec dos métallisé aluminium, en améliorant activation de surface et qualité de collage.",
-    'projects.religious.title': 'Détection de discours haineux religieux',
-    'projects.religious.description':
-      "Ensemble de transformeurs légers évaluant le discours haineux religieux multilingue et fournissant des insights de modération tout en équilibrant rappel, précision et coût de déploiement.",
-    'projects.epuck.title': 'Robot de surveillance E-Puck2',
-    'projects.epuck.description':
-      "Plateforme de sécurité embarquée sur e-puck2 qui patrouille, détecte les intrusions, déclenche des alertes et reprend automatiquement son parcours grâce aux capteurs embarqués.",
-    'projects.fpga.title': 'Réveil sur FPGA',
-    'projects.fpga.description':
-      "Réveil entièrement en logique numérique sur carte DE-10 Lite intégrant configuration, compte à rebours et alarme sonore avec entrées débouncées et machine d’états.",
-    'projects.rotary.title': 'Rétro-ingénierie d’un variateur rotatif',
-    'projects.rotary.description':
-      "Analyse complète d’un variateur d’intensité : matériaux, tolérances et processus de fabrication afin de reproduire l’assemblage dans les ateliers de l’EPFL.",
-    'projects.orange.title': 'Mécanisme de presse à jus',
-    'projects.orange.description':
-      "Presse multi-barres offrant un levier ergonomique, validée par éléments finis, avec un plan de fabrication couvrant usinage, assemblage et sécurité d’utilisation.",
-    'projects.dynabal.title': 'Dynamomètre équilibré Dynabal',
-    'projects.dynabal.description':
-      "Concept de dynamomètre compliant mesurant le couple sur des arbres flexibles avec roulements modulaires, compensation de précharge et instrumentation intégrée.",
-    'projects.mario.title': 'Jeu Mario sur matrice LED',
-    'projects.mario.description':
-      "Plateforme ATmega128 reproduisant le gameplay de Mario sur matrice LED 8×8 avec pilotes sur mesure, gestion audio et contrôleur en C embarqué.",
-    'projects.mobileRobotics.title': 'Stack robotique mobile autonome',
-    'projects.mobileRobotics.description':
-      "Stack d’autonomie pour Thymio-II combinant vision, navigation globale et locale, commande de mouvement et filtre de Kalman pour des missions d’intérieur.",
-    'projects.mpc.title': 'MPC pour autoroute autonome',
-    'projects.mpc.description':
-      "Pipeline de contrôle prédictif modélisant la conduite sur autoroute tout en respectant confort, vitesse et contraintes de sécurité face à un trafic dynamique.",
-    'projects.planetDonut.title': 'Simulateur de ressources Planet Donut',
-    'projects.planetDonut.description':
-      "Simulateur C++ de gestion de ressources coordonnant robots de forage et de logistique avec des agents RL pour maximiser la résilience des colonies.",
-    'projects.rlBenchmark.title': 'Benchmark d’algorithmes RL profonds',
-    'projects.rlBenchmark.description':
-      "Comparaison de DQN, PPO, SAC et TD3 sur les environnements classiques d’OpenAI Gym avec analyse de stabilité, vitesse d’apprentissage et coûts de calcul.",
-    'projects.powerGrid.title': 'Analyse de vulnérabilité du réseau électrique',
-    'projects.powerGrid.description':
-      "Mémoire de semestre exploitant l’apprentissage par renforcement pour découvrir des scénarios de contingence critiques et recommander des actions de mitigation sur le réseau suisse.",
-    'projects.pitot.title': 'Plateforme Pitot sans fil',
-    'projects.pitot.description':
-      "Plateforme capteur sans fil mesurant les flux via une sonde Pitot, assurant calibration embarquée et télémétrie basse consommation pour l’analyse aérodynamique.",
-    'tags.personalProject': 'projet personnel',
-    'tags.ai': 'ia',
-    'tags.languageLearning': 'apprentissage des langues',
-    'tags.machineLearning': 'apprentissage automatique',
-    'tags.predictiveMaintenance': 'maintenance prédictive',
-    'tags.anomalyDetection': "détection d'anomalies",
-    'tags.timeSeries': 'séries temporelles',
-    'tags.nanofluidics': 'nanofluidique',
-    'tags.cleanroom': 'salle blanche',
-    'tags.microfabrication': 'microfabrication',
-    'tags.deepLearning': 'deep learning',
-    'tags.nlp': 'nlp',
-    'tags.transformers': 'transformers',
-    'tags.moderation': 'modération',
-    'tags.robotics': 'robotique',
-    'tags.embedded': 'embarqué',
-    'tags.automation': 'automatisation',
-    'tags.fpga': 'fpga',
-    'tags.digitalLogic': 'logique numérique',
-    'tags.hdl': 'hdl',
-    'tags.reverseEngineering': 'rétro-ingénierie',
-    'tags.manufacturing': 'fabrication',
-    'tags.metrology': 'métrologie',
-    'tags.mechanismDesign': 'conception de mécanismes',
-    'tags.cad': 'cao',
-    'tags.prototyping': 'prototypage',
-    'tags.mechanisms': 'mécanismes',
-    'tags.mechatronics': 'mécatronique',
-    'tags.testing': 'tests',
-    'tags.microcontrollers': 'microcontrôleurs',
-    'tags.embeddedC': 'c embarqué',
-    'tags.gameDev': 'développement de jeu',
-    'tags.slam': 'slam',
-    'tags.navigation': 'navigation',
-    'tags.control': 'commande',
-    'tags.mpc': 'mpc',
-    'tags.autonomousDriving': 'conduite autonome',
-    'tags.simulation': 'simulation',
-    'tags.reinforcementLearning': 'apprentissage par renforcement',
-    'tags.cpp': 'c++',
-    'tags.benchmarking': 'benchmark',
-    'tags.openAiGym': 'openai gym',
-    'tags.powerSystems': 'réseaux électriques',
-    'tags.riskAnalysis': 'analyse de risque',
-    'tags.sensorDesign': 'conception de capteurs',
-    'tags.wireless': 'sans fil',
-    'tags.aerodynamics': 'aérodynamique',
-    'skills.title': 'Compétences et outils',
-    'skills.tools.title': 'Outils',
-    'skills.tools.programmingTitle': 'Langages de programmation',
-    'skills.tools.roboticsTitle': 'Robotique & commande',
-    'skills.tools.mlTitle': 'Apprentissage automatique & IA',
-    'skills.tools.cadTitle': 'CAO & design',
-    'skills.tools.electronicsTitle': 'Électronique & embarqué',
-    'skills.tools.manufacturingTitle': 'Fabrication & industrialisation',
-    'skills.tools.devTitle': 'Outils de développement',
-    'skills.tools.dataTitle': 'Analyse & visualisation de données',
-    'skills.tools.cleanroomTitle': 'Procédés salle blanche',
-    'skills.tools.cleanroomList':
-      'Nettoyage & activation de surface (Tepla300, Tepla Giga-batch), Dépôt, exposition & développement (Sawatec SM-150, Sawatec SM-200), Gravure sèche/humide, Évaporation (EVA760 Z11), Découpe (Disco DAD 321/3221)',
-    'skills.courses.filterAll': 'Tous',
-    'skills.courses.filterApplied': 'Appliqués',
-    'skills.courses.filterTheoretical': 'Théoriques',
-    'skills.courses.filterBusiness': 'Management',
-    'skills.courses.basicsMobileRobotics': 'Bases de la robotique mobile',
-    'skills.courses.basicsManipulation': 'Bases de la robotique de manipulation',
-    'skills.courses.machineLearning': 'Machine Learning I',
-    'skills.courses.modelPredictiveControl': 'Commande prédictive de modèles',
-    'skills.courses.roboticsPracticals': 'Travaux pratiques de robotique',
-    'skills.courses.roboticsProject': 'Projet de robotique I',
-    'skills.courses.motorControl': 'Commande embarquée de moteurs',
-    'skills.courses.deepLearning': 'Deep Learning',
-    'skills.courses.imageProcessing': 'Traitement d’images I',
-    'skills.courses.microNanoRobotics': 'Robotique micro/nano',
-    'skills.courses.networkedControl': 'Systèmes de contrôle distribués',
-    'skills.courses.reinforcementLearning': 'Apprentissage par renforcement',
-    'skills.courses.logistics': 'Logistique et analyse de la demande',
-    'skills.courses.projectManagement': 'Gestion de projet et analyse des risques',
-    'skills.courses.finance': 'Principes de finance',
-    'skills.courses.actuators': 'Actionneurs électromagnétiques I-II',
-    'skills.courses.automaticControl': 'Commande automatique & régulation numérique',
-    'skills.courses.signalsSystems': 'Signaux et systèmes I-II',
-    'skills.courses.opticalEngineering': 'Ingénierie optique',
-    'skills.courses.semiconductorPhysics': 'Physique des composants semi-conducteurs',
-    'skills.courses.embeddedSystems': 'Systèmes embarqués et robotique',
-    'skills.courses.sensors': 'Capteurs',
-    'skills.courses.manufacturingTech': 'Technologies de fabrication',
-    'skills.courses.microfabrication': 'Microfabrication et travaux pratiques',
-    'skills.courses.wirelessSensors': 'Capteurs sans fil – travaux pratiques',
-    'skills.courses.mechanismDesign': 'Conception de mécanismes I-II',
-    'skills.courses.analogDigital': 'Électronique analogique et numérique I-II',
-    'skills.courses.microcontrollers': 'Microcontrôleurs',
-    'skills.courses.designExperiments': 'Plan d’expériences',
-    'skills.courses.numericalAnalysis': 'Analyse numérique et optimisation',
-    'contact.title': 'Contact',
-    'contact.lead':
-      "Je suis ouvert à toute discussion de projet, opportunité ou collaboration. N'hésitez pas à me joindre via les canaux ci-dessous.",
-    'contact.email': 'E-mail',
-    'contact.linkedin': 'LinkedIn',
-    'contact.github': 'GitHub',
-    'footer.copy': '© 2025 Benjamin Bahurel. Tous droits réservés.',
-  },
 };
 
-const langButtons = document.querySelectorAll('.lang-btn');
-
-const applyLanguage = (lang) => {
-  const dict = translations[lang];
-  if (!dict) return;
+// Apply English translations
+const applyTranslations = () => {
+  const dict = translations.en;
   document.querySelectorAll('[data-i18n]').forEach((node) => {
     const key = node.dataset.i18n;
     if (dict[key]) {
@@ -563,21 +453,9 @@ const applyLanguage = (lang) => {
       }
     }
   });
-  document.body.setAttribute('data-lang', lang);
-  langButtons.forEach((btn) => {
-    btn.classList.toggle('active', btn.dataset.lang === lang);
-  });
-  localStorage.setItem('preferredLanguage', lang);
 };
 
-langButtons.forEach((btn) => {
-  btn.addEventListener('click', () => {
-    applyLanguage(btn.dataset.lang);
-  });
-});
-
-const savedLang = localStorage.getItem('preferredLanguage') || 'en';
-applyLanguage(savedLang);
+applyTranslations();
 
 
 

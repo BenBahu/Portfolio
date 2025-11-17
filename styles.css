@@ -534,6 +534,26 @@ section {
   transition: opacity 0.3s ease, transform 0.3s ease, max-height 0.3s ease;
 }
 
+/* Smaller text for specific projects */
+.project-card[data-modal="modal-religious-hate-speech"] .project-body p,
+.project-card[data-modal="modal-ml4pm"] .project-body p,
+.project-card[data-modal="modal-semester-project-2"] .project-body p,
+.project-card[data-modal="modal-religious-hate-speech"]:hover .project-body p,
+.project-card[data-modal="modal-ml4pm"]:hover .project-body p,
+.project-card[data-modal="modal-semester-project-2"]:hover .project-body p {
+  font-size: 0.85rem;
+}
+
+.project-card[data-modal="modal-religious-hate-speech"] .tag-list li,
+.project-card[data-modal="modal-ml4pm"] .tag-list li,
+.project-card[data-modal="modal-semester-project-2"] .tag-list li,
+.project-card[data-modal="modal-religious-hate-speech"]:hover .tag-list li,
+.project-card[data-modal="modal-ml4pm"]:hover .tag-list li,
+.project-card[data-modal="modal-semester-project-2"]:hover .tag-list li {
+  font-size: 0.5rem;
+  padding: 0.15rem 0.4rem;
+}
+
 .project-card:hover .project-body p {
   opacity: 1;
   transform: translateY(0);
@@ -579,10 +599,10 @@ section {
 }
 
 .tag-list li {
-  padding: 0.25rem 0.6rem;
+  padding: 0.2rem 0.5rem;
   background: rgba(255, 255, 255, 0.16);
   border-radius: 999px;
-  font-size: 0.65rem;
+  font-size: 0.55rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: rgba(255, 255, 255, 0.9);
@@ -720,7 +740,7 @@ body.modal-open {
 }
 
 .modal-meta-tags .tag-list li {
-  font-size: 0.68rem;
+  font-size: 0.58rem;
 }
 
 .modal-body {
@@ -861,6 +881,17 @@ body.modal-open {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.08);
   font-weight: 500;
+}
+
+.course-list li a {
+  color: inherit;
+  text-decoration: none;
+  display: block;
+  transition: color 0.2s ease;
+}
+
+.course-list li a:hover {
+  color: var(--accent);
 }
 
 .course-list li[hidden] {
