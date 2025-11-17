@@ -1,0 +1,1452 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Georg Schwabedal | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TCTSZPOdUG6WqXK7T6J2d1wA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#hero">Skip to content</a>
+    <header class="top-nav">
+      <div class="brand">BB</div>
+      <nav>
+        <button class="mobile-toggle" aria-label="Toggle navigation">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <ul class="nav-links">
+          <li><a href="#hero" data-i18n="nav.home">Home</a></li>
+          <li><a href="#about" data-i18n="nav.about">About</a></li>
+          <li><a href="#ongoing-projects" data-i18n="nav.ongoing">Ongoing</a></li>
+          <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
+          <li><a href="#skills" data-i18n="nav.skills">Skills</a></li>
+          <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="lang-switch" role="group" aria-label="Language selection">
+        <button class="lang-btn" data-lang="en" aria-label="English">
+          <span role="img" aria-hidden="true">🇬🇧</span>
+        </button>
+        <button class="lang-btn" data-lang="fr" aria-label="Français">
+          <span role="img" aria-hidden="true">🇫🇷</span>
+        </button>
+      </div>
+      <div class="header-actions">
+        <a class="btn ghost" href="mailto:benjamin.bahurel@gmail.com" data-i18n="nav.email">Email</a>
+        <a class="btn solid" href="./SKILLS/CV.pdf" download data-i18n="nav.resume">Resume</a>
+      </div>
+    </header>
+
+    <main>
+      <section id="hero" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <img
+            src="./PROJECTS/images/GSchwabedal_Headshot.jpeg"
+            alt="Portrait of Georg Schwabedal"
+            class="hero-avatar"
+          />
+          <div class="hero-text">
+            <h1 data-i18n="hero.name">Benjamin Bahurel</h1>
+            <p class="tagline" data-i18n="hero.tagline">
+              Microengineering, Robotics and Machine Learning engineer
+            </p>
+            <p class="languages">
+              <span><i class="fa-solid fa-globe"></i></span>
+              <span data-i18n="hero.languages">French · English · Spanish</span>
+            </p>
+            <div class="hero-links">
+              <a
+                class="btn ghost"
+                href="https://www.linkedin.com/in/benjamin-bahurel-862736390/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <i class="fa-brands fa-linkedin"></i>
+                LinkedIn
+              </a>
+              <a
+                class="btn ghost"
+                href="https://github.com/BenBahu?tab=repositories"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <i class="fa-brands fa-github"></i>
+                GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="scroll-indicator" aria-hidden="true">
+          <span class="mouse"></span>
+        </div>
+      </section>
+
+      <section id="about" class="about">
+        <div class="section-heading">
+          <h2 data-i18n="about.title" data-i18n-html="true">About</h2>
+        </div>
+        <div class="about-grid">
+          <article>
+            <p data-i18n="about.paragraph1">
+              I'm a Microengineering graduate from EPFL with a focus on robotics, control, and applied machine learning. From predictive maintenance models for AXPO's industrial valve fleet to high-frequency trading analytics, I build systems where data and hardware converge to deliver measurable performance.
+            </p>
+            <p data-i18n="about.paragraph2">
+              My portfolio spans autonomous mechatronic rigs, embedded wearables, and simulation-heavy software. Projects such as the DYNABAL dynamometer, self-regulating ski jacket, wireless sensor networks, and FPGA-based interfaces reflect hands-on experience moving from CAD and PCB design through fabrication, testing, and deployment.
+            </p>
+            <p data-i18n="about.paragraph3">
+              I thrive in multidisciplinary teams—aligning robotics labs, finance analysts, and manufacturing workshops. Whether mentoring robotics projects, leading cleanroom builds, or turning deep-learning research into actionable dashboards, I translate complex constraints into clear plans that keep teams shipping resilient products.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="ongoing-projects" class="projects projects--ongoing">
+        <div class="section-heading">
+          <h2 data-i18n="ongoing.title" data-i18n-html="true">Ongoing Projects</h2>
+        </div>
+        <div class="projects-grid">
+          <article class="project-card ongoing" data-category="personal software" data-modal="modal-vocy">
+            <div class="project-media" style="--bg: url('./PROJECTS/images/SoftwareConstruction_Cover.png');"></div>
+            <div class="project-body">
+              <span class="badge ongoing" data-i18n="badge.ongoing">Project Still Ongoing</span>
+              <h3 data-i18n="projects.vocy.title">Vocy Vocabulary Companion</h3>
+              <p data-i18n="projects.vocy.description">
+                Mobile-first language companion with a structured spaced-repetition track and an AI discovery feed that suggests idioms, slang, and domain vocabulary based on learner interests.
+              </p>
+              <ul class="tag-list">
+                <li data-i18n="tags.personalProject">personal project</li>
+                <li data-i18n="tags.ai">ai</li>
+                <li data-i18n="tags.languageLearning">language learning</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="project-card ongoing" data-category="software" data-modal="modal-ml4pm">
+            <div class="project-media" style="--bg: url('./PERSONNAL PROJECTS/ML4PM/MLPredictive_Cover.jpeg');"></div>
+            <div class="project-body">
+              <span class="badge ongoing" data-i18n="badge.ongoing">Project Still Ongoing</span>
+              <h3 data-i18n="projects.ml4pm.title">ML for Predictive Maintenance</h3>
+              <p data-i18n="projects.ml4pm.description">
+                Machine learning system in collaboration with AXPO to detect anomalies in ball valve operations for industrial maintenance, targeting proactive interventions.
+              </p>
+              <ul class="tag-list">
+                <li data-i18n="tags.machineLearning">machine learning</li>
+                <li data-i18n="tags.predictiveMaintenance">predictive maintenance</li>
+                <li data-i18n="tags.anomalyDetection">anomaly detection</li>
+                <li data-i18n="tags.timeSeries">time series</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="project-card ongoing" data-category="hardware" data-modal="modal-semester-project-2">
+            <div class="project-media" style="--bg: url('./PERSONNAL PROJECTS/Semester Project 2/Nanofluidic_Cover.png');"></div>
+            <div class="project-body">
+              <span class="badge ongoing" data-i18n="badge.ongoing">Project Still Ongoing</span>
+              <h3 data-i18n="projects.nano.title">Nanofluidic Diamond Device</h3>
+              <p data-i18n="projects.nano.description">
+                Semester research developing aluminium-backed diamond nanofluidic devices with improved fabrication steps, focusing on surface activation and bonding quality.
+              </p>
+              <ul class="tag-list">
+                <li data-i18n="tags.nanofluidics">nanofluidics</li>
+                <li data-i18n="tags.cleanroom">cleanroom</li>
+                <li data-i18n="tags.microfabrication">microfabrication</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="projects" class="projects">
+        <div class="section-heading">
+          <h2 data-i18n="projects.title" data-i18n-html="true">Projects</h2>
+        </div>
+        <div class="filter-bar" role="tablist" aria-label="Project categories">
+          <button class="filter-btn active" data-filter="all" role="tab" data-i18n="projects.filter.all">
+            All
+          </button>
+          <button class="filter-btn" data-filter="software" role="tab" data-i18n="projects.filter.software">
+            Software
+          </button>
+          <button class="filter-btn" data-filter="hardware" role="tab" data-i18n="projects.filter.hardware">
+            Hardware
+          </button>
+          <button class="filter-btn" data-filter="mechanical" role="tab" data-i18n="projects.filter.mechanical">
+            Mechanical
+          </button>
+          <button class="filter-btn" data-filter="personal" role="tab" data-i18n="projects.filter.personal">
+            Personal
+          </button>
+        </div>
+        <div class="projects-grid">
+          <article class="project-card" data-category="software" data-modal="modal-religious-hate-speech">
+            <div class="project-media" style="--bg: url('./PROJECTS/Deep Learning/DeepLearning_Cover.png');"></div>
+            <div class="project-body">
+              <h3 data-i18n="projects.religious.title">Religious Hate Speech Detection</h3>
+              <p data-i18n="projects.religious.description">
+                Lightweight transformer ensemble evaluating multilingual religious hate speech and surfacing moderation insights while balancing accuracy, recall, and deployment cost.
+              </p>
+              <ul class="tag-list">
+                <li data-i18n="tags.deepLearning">deep learning</li>
+                <li data-i18n="tags.transformers">transformers</li>
+                <li data-i18n="tags.moderation">moderation</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="project-card" data-category="hardware" data-modal="modal-epuck">
+            <div class="project-media" style="--bg: url('./PROJECTS/Embedded Systems/EmbeddedSystems_Cover.png');"></div>
+            <div class="project-body">
+              <h3 data-i18n="projects.epuck.title">E-Puck2 Surveillance Robot</h3>
+              <p data-i18n="projects.epuck.description">
+                Embedded security platform on the e-puck2 that patrols, detects intrusions, and emits alarms using onboard sensing, behaviour states, and autonomous navigation loops.
+              </p>
+              <ul class="tag-list">
+                <li data-i18n="tags.robotics">robotics</li>
+                <li data-i18n="tags.embedded">embedded</li>
+                <li data-i18n="tags.automation">automation</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="project-card" data-category="hardware" data-modal="modal-fpga-alarm">
+            <div class="project-media" style="--bg: url('./PROJECTS/Logic Systems/LogicSystems_Cover.png');"></div>
+            <div class="project-body">
+              <h3 data-i18n="projects.fpga.title">FPGA Alarm Clock</h3>
+              <p data-i18n="projects.fpga.description">
+                Digital logic alarm clock implementing setup, countdown, and audible alerts on DE-10 Lite hardware with debounced inputs and finite state control.
+              </p>
+              <ul class="tag-list">
+                <li data-i18n="tags.fpga">fpga</li>
+                <li data-i18n="tags.digitalLogic">digital logic</li>
+                <li data-i18n="tags.hdl">hdl</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="project-card" data-category="mechanical" data-modal="modal-rotary-dimmer">
+            <div class="project-media" style="--bg: url('./PROJECTS/Manufacturing Technologies/Manufacturing_Cover.png');"></div>
+            <div class="project-body">
+              <h3 data-i18n="projects.rotary.title">Rotary Dimmer Reverse Engineering</h3>
+              <p data-i18n="projects.rotary.description">
+                Manufacturing teardown of a rotary dimmer switch covering material analysis, tolerances, and a full process plan to reproduce the assembly with EPFL lab equipment.
+              </p>
+              <ul class="tag-list">
+                <li data-i18n="tags.reverseEngineering">reverse engineering</li>
+                <li data-i18n="tags.manufacturing">manufacturing</li>
+                <li data-i18n="tags.metrology">metrology</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="project-card" data-category="mechanical" data-modal="modal-orange-press">
+            <div class="project-media" style="--bg: url('./PROJECTS/Mechanical Construction/MechanicalConstru_Cover.png');"></div>
+            <div class="project-body">
+              <h3 data-i18n="projects.orange.title">Orange Juice Press Mechanism</h3>
+              <p data-i18n="projects.orange.description">
+                Multi-link press engineered for ergonomic leverage, finite-element validated components, and a build plan spanning machining, assembly, and safety assessment.
+              </p>
+              <ul class="tag-list">
+                <li data-i18n="tags.mechanismDesign">mechanism design</li>
+                <li data-i18n="tags.cad">cad</li>
+                <li data-i18n="tags.prototyping">prototyping</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="project-card" data-category="mechanical" data-modal="modal-dynabal">
+            <div class="project-media" style="--bg: url('./PROJECTS/Mechanisms Design/MechanismsDesign_Cover.png');"></div>
+            <div class="project-body">
+              <h3 data-i18n="projects.dynabal.title">Dynabal Balanced Dynamometer</h3>
+              <p data-i18n="projects.dynabal.description">
+                Compliant dynamometer concept capturing torque on flexible shafts with modular bearings, preload compensation, and instrumentation interfaces.
+              </p>
+              <ul class="tag-list">
+                <li data-i18n="tags.mechanisms">mechanisms</li>
+                <li data-i18n="tags.mechatronics">mechatronics</li>
+                <li data-i18n="tags.testing">testing</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="project-card" data-category="hardware" data-modal="modal-mario">
+            <div class="project-media" style="--bg: url('./PROJECTS/Microcontrollers/Microcontroller_Cover.png');"></div>
+            <div class="project-body">
+              <h3 data-i18n="projects.mario.title">Homemade Mario LED Matrix Game</h3>
+              <p data-i18n="projects.mario.description">
+                ATmega128-based platform recreating Mario gameplay on an 8×8 LED matrix with custom drivers, sound, and controller logic coded in embedded C.
+              </p>
+              <ul class="tag-list">
+                <li data-i18n="tags.microcontrollers">microcontrollers</li>
+                <li data-i18n="tags.embeddedC">embedded c</li>
+                <li data-i18n="tags.gameDev">game dev</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="project-card" data-category="hardware" data-modal="modal-mobile-robotics">
+            <div class="project-media" style="--bg: url('./PROJECTS/images/MobileRobotics_Cover.png');"></div>
+            <div class="project-body">
+              <h3 data-i18n="projects.mobileRobotics.title">Autonomous Mobile Robotics Stack</h3>
+              <p data-i18n="projects.mobileRobotics.description">
+                Thymio-II robotics stack integrating computer vision, global and local navigation, motion control, and Kalman filtering for autonomous indoor routing demos.
+              </p>
+              <ul class="tag-list">
+                <li data-i18n="tags.slam">slam</li>
+                <li data-i18n="tags.navigation">navigation</li>
+                <li data-i18n="tags.control">control</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="project-card" data-category="software" data-modal="modal-autonomous-mpc">
+            <div class="project-media" style="--bg: url('./PROJECTS/images/ModelPredictiveControl_Cover.jpeg');"></div>
+            <div class="project-body">
+              <h3 data-i18n="projects.mpc.title">Autonomous Highway MPC</h3>
+              <p data-i18n="projects.mpc.description">
+                Model predictive control pipeline for highway driving that optimises lane keeping, speed profiles, and constraint handling under dynamic traffic scenarios.
+              </p>
+              <ul class="tag-list">
+                <li data-i18n="tags.mpc">mpc</li>
+                <li data-i18n="tags.control">control</li>
+                <li data-i18n="tags.autonomousDriving">autonomous driving</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="project-card" data-category="software" data-modal="modal-planet-donut">
+            <div class="project-media" style="--bg: url('./PROJECTS/images/PlanetDonut_Cover.png');"></div>
+            <div class="project-body">
+              <h3 data-i18n="projects.planetDonut.title">Planet Donut Resource Simulator</h3>
+              <p data-i18n="projects.planetDonut.description">
+                C++ resource management simulator coordinating mining and logistics robots with reinforcement learning policies to maximise colony resilience.
+              </p>
+              <ul class="tag-list">
+                <li data-i18n="tags.simulation">simulation</li>
+                <li data-i18n="tags.reinforcementLearning">reinforcement learning</li>
+                <li data-i18n="tags.cpp">c++</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="project-card ongoing" data-category="personal software" data-modal="modal-vocy">
+            <div class="project-media" style="--bg: url('./PROJECTS/images/SoftwareConstruction_Cover.png');"></div>
+            <div class="project-body">
+              <span class="badge ongoing" data-i18n="badge.ongoing">Project Still Ongoing</span>
+              <h3 data-i18n="projects.vocy.title">Vocy Vocabulary Companion</h3>
+              <p data-i18n="projects.vocy.description">
+                Mobile-first language companion with a structured spaced-repetition track and an AI discovery feed that suggests idioms, slang, and domain vocabulary based on learner interests.
+              </p>
+              <ul class="tag-list">
+                <li data-i18n="tags.personalProject">personal project</li>
+                <li data-i18n="tags.ai">ai</li>
+                <li data-i18n="tags.languageLearning">language learning</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="project-card ongoing" data-category="software" data-modal="modal-ml4pm">
+            <div class="project-media" style="--bg: url('./PERSONNAL PROJECTS/ML4PM/MLPredictive_Cover.jpeg');"></div>
+            <div class="project-body">
+              <span class="badge ongoing" data-i18n="badge.ongoing">Project Still Ongoing</span>
+              <h3 data-i18n="projects.ml4pm.title">ML for Predictive Maintenance</h3>
+              <p data-i18n="projects.ml4pm.description">
+                Machine learning service in collaboration with AXPO to detect anomalies in ball valve operations, providing early warnings for maintenance teams.
+              </p>
+              <ul class="tag-list">
+                <li data-i18n="tags.machineLearning">machine learning</li>
+                <li data-i18n="tags.predictiveMaintenance">predictive maintenance</li>
+                <li data-i18n="tags.anomalyDetection">anomaly detection</li>
+                <li data-i18n="tags.timeSeries">time series</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="project-card ongoing" data-category="hardware" data-modal="modal-semester-project-2">
+            <div class="project-media" style="--bg: url('./PERSONNAL PROJECTS/Semester Project 2/Nanofluidic_Cover.png');"></div>
+            <div class="project-body">
+              <span class="badge ongoing" data-i18n="badge.ongoing">Project Still Ongoing</span>
+              <h3 data-i18n="projects.nano.title">Nanofluidic Diamond Device</h3>
+              <p data-i18n="projects.nano.description">
+                Semester research iterating on cleanroom processes for aluminium-backed diamond nanofluidic devices to enhance bonding quality and throughput.
+              </p>
+              <ul class="tag-list">
+                <li data-i18n="tags.nanofluidics">nanofluidics</li>
+                <li data-i18n="tags.cleanroom">cleanroom</li>
+                <li data-i18n="tags.microfabrication">microfabrication</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="project-card" data-category="software" data-modal="modal-rl-benchmark">
+            <div class="project-media" style="--bg: url('./PROJECTS/Reinforcement Learning/ReinfoLearning_Cover.png');"></div>
+            <div class="project-body">
+              <h3 data-i18n="projects.rlBenchmark.title">Deep RL Algorithm Benchmark</h3>
+              <p data-i18n="projects.rlBenchmark.description">
+                Comparative study of DQN, PPO, SAC, and TD3 across classic control environments with learning curves, hyperparameter sweeps, and stability analysis.
+              </p>
+              <ul class="tag-list">
+                <li data-i18n="tags.reinforcementLearning">reinforcement learning</li>
+                <li data-i18n="tags.benchmarking">benchmarking</li>
+                <li data-i18n="tags.openAiGym">openai gym</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="project-card" data-category="software" data-modal="modal-power-grid">
+            <div class="project-media" style="--bg: url('./PROJECTS/Semester Project 1/SemProject_Cover.png');"></div>
+            <div class="project-body">
+              <h3 data-i18n="projects.powerGrid.title">Power Grid Vulnerability Analysis</h3>
+              <p data-i18n="projects.powerGrid.description">
+                Semester thesis using reinforcement learning contingency search to expose weak points in national power grids and recommend risk mitigation strategies.
+              </p>
+              <ul class="tag-list">
+                <li data-i18n="tags.powerSystems">power systems</li>
+                <li data-i18n="tags.riskAnalysis">risk analysis</li>
+                <li data-i18n="tags.reinforcementLearning">reinforcement learning</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="project-card" data-category="hardware" data-modal="modal-pitot">
+            <div class="project-media" style="--bg: url('./PROJECTS/Wireless Sensors/Wireless_Cover.png');"></div>
+            <div class="project-body">
+              <h3 data-i18n="projects.pitot.title">Wireless Pitot Probe Platform</h3>
+              <p data-i18n="projects.pitot.description">
+                Wireless sensor suite that logs airflow via a Pitot probe, performs onboard calibration, and streams data for aerodynamic diagnostics in the lab.
+              </p>
+              <ul class="tag-list">
+                <li data-i18n="tags.sensorDesign">sensor design</li>
+                <li data-i18n="tags.wireless">wireless</li>
+                <li data-i18n="tags.aerodynamics">aerodynamics</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+        <div class="project-modals">
+          <div class="project-modal" id="modal-vocy" role="dialog" aria-modal="true" aria-labelledby="modal-vocy-title">
+            <div class="modal-content">
+              <button class="modal-close" aria-label="Close project details">&times;</button>
+              <div class="modal-hero">
+                <img src="./PROJECTS/images/SoftwareConstruction_Cover.png" alt="Screens from the Vocy language companion" />
+              </div>
+              <div class="modal-header">
+                <h3 id="modal-vocy-title" data-i18n="modal.vocy.title">Vocy Vocabulary Companion</h3>
+                <p class="modal-subtitle" data-i18n="modal.vocy.subtitle">Personal Project · Ongoing</p>
+                <div class="modal-actions">
+                  <a class="modal-action" href="https://github.com/BenBahu?tab=repositories" target="_blank" rel="noreferrer">
+                    <i class="fa-brands fa-github"></i>
+                    <span data-i18n="modal.common.viewRepo">View Repository</span>
+                  </a>
+                </div>
+                <p class="modal-tagline" data-i18n="modal.vocy.tagline">
+                  Mobile-first application that accelerates language learning with a structured spaced-repetition track and an AI discovery feed tailored to the learner's interests.
+                </p>
+                <div class="modal-meta-tags">
+                  <ul class="tag-list">
+                    <li data-i18n="tags.personalProject">personal project</li>
+                    <li data-i18n="tags.ai">ai</li>
+                    <li data-i18n="tags.languageLearning">language learning</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="modal-body">
+                <div class="modal-section">
+                  <h4 data-i18n="modal.vocy.conceptTitle">Concept</h4>
+                  <p data-i18n="modal.vocy.concept">
+                    Designed Vocy to support fast-moving engineers learning new languages. The learning mode schedules flashcard-style reviews with adaptive spacing, while the discovery mode uses an LLM agent to surface idioms, slang, and domain-specific vocabulary from curated sources.
+                  </p>
+                </div>
+                <div class="modal-section">
+                  <h4 data-i18n="modal.vocy.implementationTitle">Implementation</h4>
+                  <p data-i18n="modal.vocy.implementation">
+                    Built with a React Native front-end, Supabase for synchronised storage, and an OpenAI-powered recommender microservice. Added pronunciation practice with speech-to-text scoring and progress dashboards for daily, weekly, and cumulative streaks.
+                  </p>
+                </div>
+                <div class="modal-section">
+                  <h4 data-i18n="modal.vocy.learningTitle">What I'm Learning</h4>
+                  <ul>
+                    <li data-i18n="modal.vocy.learning1">Product discovery and retention analytics for consumer apps</li>
+                    <li data-i18n="modal.vocy.learning2">Prompt engineering for contextual vocabulary recommendations</li>
+                    <li data-i18n="modal.vocy.learning3">Privacy-aware data pipelines for multilingual learning progress</li>
+                  </ul>
+                </div>
+                <div class="modal-gallery">
+                  <img src="./PROJECTS/images/SoftwareConstructio_Board.JPG" alt="User flow sketch for the Vocy app" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-modal" id="modal-ml4pm" role="dialog" aria-modal="true" aria-labelledby="modal-ml4pm-title">
+            <div class="modal-content">
+              <button class="modal-close" aria-label="Close project details">&times;</button>
+              <div class="modal-hero">
+                <img src="./PERSONNAL PROJECTS/ML4PM/MLPredictive_Cover.jpeg" alt="Predictive maintenance dashboard preview" />
+              </div>
+              <div class="modal-header">
+                <h3 id="modal-ml4pm-title">ML for Predictive Maintenance</h3>
+                <p class="modal-subtitle">AXPO Collaboration · Ongoing</p>
+                <div class="modal-actions">
+                  <a class="modal-action" href="https://github.com/BenBahu?tab=repositories" target="_blank" rel="noreferrer">
+                    <i class="fa-brands fa-github"></i>
+                    View Repository
+                  </a>
+                  <a class="modal-action" href="./PERSONNAL%20PROJECTS/ML4PM/Final%20Project%202025.pdf" download>
+                    <i class="fa-solid fa-file-arrow-down"></i>
+                    Download Report
+                  </a>
+                </div>
+                <p class="modal-tagline">
+                  Building an ML service that detects anomalies in industrial ball valve operations so maintenance teams can act before failure.
+                </p>
+                <div class="modal-meta-tags">
+                  <ul class="tag-list">
+                    <li>machine learning</li>
+                    <li>predictive maintenance</li>
+                    <li>anomaly detection</li>
+                    <li>time series</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="modal-body">
+                <div class="modal-section">
+                  <h4>Problem</h4>
+                  <p>
+                    Valve actuators on hydro infrastructure operate under variable loads. Unexpected drift leads to service interruptions and costly repairs. The aim is to detect early-stage anomalies from limited sensors.
+                  </p>
+                </div>
+                <div class="modal-section">
+                  <h4>Approach</h4>
+                  <p>
+                    Developing a hybrid modelling stack combining physics-informed baselines with transformer-based time-series models. Implementing streaming feature extraction, automated labelling from maintenance logs, and model monitoring hooks.
+                  </p>
+                </div>
+                <div class="modal-section">
+                  <h4>Status</h4>
+                  <ul>
+                    <li>Pilot pipeline deployed on edge gateway for data collection</li>
+                    <li>Model comparison harness with Optuna tuning and drift detection</li>
+                    <li>Next: integrate human-in-the-loop feedback from maintenance experts</li>
+                  </ul>
+                </div>
+                <div class="modal-gallery">
+                  <img src="./PERSONNAL PROJECTS/ML4PM/MLPredictive_BallValve.jpg" alt="Industrial ball valve predictive maintenance test bench" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-modal" id="modal-semester-project-2" role="dialog" aria-modal="true" aria-labelledby="modal-semester-project-2-title">
+            <div class="modal-content">
+              <button class="modal-close" aria-label="Close project details">&times;</button>
+              <div class="modal-hero">
+                <img src="./PERSONNAL PROJECTS/Semester Project 2/Nanofluidic_Cover.png" alt="Nanofluidic diamond device cover" />
+              </div>
+              <div class="modal-header">
+                <h3 id="modal-semester-project-2-title">Nanofluidic Diamond Device</h3>
+                <p class="modal-subtitle">Semester Project II · Ongoing</p>
+                <div class="modal-actions">
+                  <a class="modal-action" href="https://github.com/BenBahu?tab=repositories" target="_blank" rel="noreferrer">
+                    <i class="fa-brands fa-github"></i>
+                    View Repository
+                  </a>
+                  <a class="modal-action" href="./PERSONNAL%20PROJECTS/Semester%20Project%202/2025-10-13_LNQ_diamond_device_valuminum_Bahurel.pdf" download>
+                    <i class="fa-solid fa-file-arrow-down"></i>
+                    Download Report
+                  </a>
+                </div>
+                <p class="modal-tagline">
+                  Refining the cleanroom process flow for aluminium-backed diamond nanofluidic devices to improve bonding quality and throughput.
+                </p>
+                <div class="modal-meta-tags">
+                  <ul class="tag-list">
+                    <li>nanofluidics</li>
+                    <li>cleanroom</li>
+                    <li>microfabrication</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="modal-body">
+                <div class="modal-section">
+                  <h4>Objectives</h4>
+                  <p>
+                    Optimise surface activation, photoresist patterning, and metal deposition steps for nanofluidic channels in diamond substrates. Document a reproducible process with in-line metrology.
+                  </p>
+                </div>
+                <div class="modal-section">
+                  <h4>Current Focus</h4>
+                  <p>
+                    Iterating on plasma activation recipes (Tepla Giga-batch vs Tepla300) and refining alignment for dual-layer lithography. Characterising bonding strength through leak testing and microscopy.
+                  </p>
+                </div>
+                <div class="modal-section">
+                  <h4>Next Steps</h4>
+                  <ul>
+                    <li>Integrate evaporation runs on EVA760 for multilayer aluminium contacts</li>
+                    <li>Establish cleaning/inspection checklist for device batches</li>
+                    <li>Prepare documentation pack for handover to the LNQ lab</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-modal" id="modal-religious-hate-speech" role="dialog" aria-modal="true" aria-labelledby="modal-religious-hate-speech-title">
+            <div class="modal-content">
+              <button class="modal-close" aria-label="Close project details">&times;</button>
+              <div class="modal-hero">
+                <img src="./PROJECTS/Deep Learning/DeepLearning_Cover.png" alt="Model dashboard for the hate speech detection project" />
+              </div>
+              <div class="modal-header">
+                <h3 id="modal-religious-hate-speech-title" data-i18n="modal.religious.title">Religious Hate Speech Detection</h3>
+                <p class="modal-subtitle" data-i18n="modal.religious.subtitle">Spring 2025 · Deep Learning (EE-559)</p>
+                <div class="modal-actions">
+                  <a class="modal-action" href="https://github.com/BenBahu/Deep-Learning-Project---Hate-Speech-Detector-" target="_blank" rel="noreferrer">
+                    <i class="fa-brands fa-github"></i>
+                    <span data-i18n="modal.common.viewRepo">View Repository</span>
+                  </a>
+                  <a class="modal-action" href="./PROJECTS/Deep%20Learning/DeepLearning_Report_GS.pdf" download>
+                    <i class="fa-solid fa-file-arrow-down"></i>
+                    <span data-i18n="modal.common.downloadReport">Download Report</span>
+                  </a>
+                </div>
+                <p class="modal-tagline" data-i18n="modal.religious.tagline">
+                  Lightweight transformer models tuned to flag religious hate speech across multilingual short-form content while balancing recall and latency.
+                </p>
+                <div class="modal-meta-tags">
+                  <ul class="tag-list">
+                    <li data-i18n="tags.deepLearning">deep learning</li>
+                    <li data-i18n="tags.nlp">nlp</li>
+                    <li data-i18n="tags.transformers">transformers</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="modal-body">
+                <div class="modal-section">
+                  <h4 data-i18n="modal.religious.assignmentTitle">Assignment</h4>
+                  <p data-i18n="modal.religious.assignment">
+                    Build and compare compact transformer architectures able to detect religious hate speech in noisy social media text. The model had to generalise across English, French, German, and Spanish while maintaining transparency for moderation teams.
+                  </p>
+                </div>
+                <div class="modal-section">
+                  <h4 data-i18n="modal.religious.solutionTitle">Solution</h4>
+                  <p data-i18n="modal.religious.solution">
+                    Benchmarked six lightweight transformer variants (DistilBERT, ALBERT, ELECTRA, RoBERTa, BERT-Tiny, MobileBERT) with Optuna hyper-parameter tuning. Combined data augmentation, class rebalancing, and multilingual embeddings to reach 95% recall in low-resource regimes. Deployed the best model in a Gradio moderation cockpit.
+                  </p>
+                </div>
+                <div class="modal-section">
+                  <h4 data-i18n="modal.religious.toolsTitle">Tools &amp; Competencies</h4>
+                  <ul>
+                    <li data-i18n="modal.religious.tools1">Python, Hugging Face Transformers, Optuna, Gradio, Docker</li>
+                    <li data-i18n="modal.religious.tools2">Multilingual text preprocessing, explainable AI overlays, model monitoring</li>
+                    <li data-i18n="modal.religious.tools3">Ethical AI considerations for moderation workflows</li>
+                  </ul>
+                </div>
+                <div class="modal-gallery">
+                  <img src="./PROJECTS/Deep Learning/DeepLearning_ModelPerformance.png" alt="Performance grid comparing transformer variants" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-modal" id="modal-epuck" role="dialog" aria-modal="true" aria-labelledby="modal-epuck-title">
+            <div class="modal-content">
+              <button class="modal-close" aria-label="Close project details">&times;</button>
+              <div class="modal-hero">
+                <img src="./PROJECTS/Embedded Systems/EmbeddedSystems_Cover.png" alt="E-Puck2 surveillance robot rendering" />
+              </div>
+              <div class="modal-header">
+                <h3 id="modal-epuck-title">E-Puck2 Surveillance Robot</h3>
+                <p class="modal-subtitle">Spring 2023 · Embedded Systems &amp; Robotics</p>
+                <div class="modal-actions">
+                  <a class="modal-action" href="./PROJECTS/Embedded%20Systems/Robot%20de%20surveillance%20e-puck%202.pdf" download>
+                    <i class="fa-solid fa-file-arrow-down"></i>
+                    Download Report
+                  </a>
+                </div>
+                <p class="modal-tagline">A security patrol robot that detects intruders, triggers alarms, and resumes patrol autonomously on the e-puck2 platform.</p>
+                <div class="modal-meta-tags">
+                  <ul class="tag-list">
+                    <li>robotics</li>
+                    <li>embedded</li>
+                    <li>automation</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="modal-body">
+                <div class="modal-section">
+                  <h4>Objective</h4>
+                  <p>
+                    Extend the e-puck2 robotic base with higher-level autonomy: perimeter patrol, obstacle detection, intruder identification, and alarm routines while keeping low-power constraints.
+                  </p>
+                </div>
+                <div class="modal-section">
+                  <h4>Approach</h4>
+                  <p>
+                    Implemented multi-threaded behaviour trees in C, using IR sensors for proximity, an IMU for heading stabilisation, and camera-based blob detection for intruders. Integrated a state machine to manage patrol, alert, and recovery loops.
+                  </p>
+                </div>
+                <div class="modal-section">
+                  <h4>Highlights</h4>
+                  <ul>
+                    <li>Modular firmware architecture with FreeRTOS-inspired task scheduling</li>
+                    <li>Audio/visual alert system with PWM siren and RGB LED signalling</li>
+                    <li>On-robot logging for debugging sensor fusion and decision thresholds</li>
+                  </ul>
+                </div>
+                <div class="modal-gallery">
+                  <img src="./PROJECTS/Embedded Systems/EmbeddedSystems_1.png" alt="E-Puck2 robot during testing" />
+                  <img src="./PROJECTS/Embedded Systems/EmbeddedSystems_2.png" alt="Functional diagram of the E-Puck2 surveillance robot" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-modal" id="modal-fpga-alarm" role="dialog" aria-modal="true" aria-labelledby="modal-fpga-alarm-title">
+            <div class="modal-content">
+              <button class="modal-close" aria-label="Close project details">&times;</button>
+              <div class="modal-hero">
+                <img src="./PROJECTS/images/LogicSystems_Cover.png" alt="FPGA alarm clock interface mockup" />
+              </div>
+              <div class="modal-header">
+                <h3 id="modal-fpga-alarm-title">FPGA Alarm Clock</h3>
+                <p class="modal-subtitle">Spring 2023 · Logic Systems (EE-110)</p>
+                <div class="modal-actions">
+                  <a class="modal-action" href="./PROJECTS/Logic%20Systems/Rendu-G048.pdf" download>
+                    <i class="fa-solid fa-file-arrow-down"></i>
+                    Download Report
+                  </a>
+                </div>
+                <p class="modal-tagline">
+                  Hardware alarm clock built on an Intel DE10-Lite FPGA with tactile controls, seven-segment display, and audio notifications.
+                </p>
+                <div class="modal-meta-tags">
+                  <ul class="tag-list">
+                    <li>fpga</li>
+                    <li>digital logic</li>
+                    <li>hdl</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="modal-body">
+                <div class="modal-section">
+                  <h4>Design Brief</h4>
+                  <p>
+                    Deliver a programmable alarm clock with timekeeping, alarm scheduling, snooze, and local reset features implemented entirely in hardware description language.
+                  </p>
+                </div>
+                <div class="modal-section">
+                  <h4>Implementation</h4>
+                  <p>
+                    Created modular VHDL components for debounced button input, finite-state alarm control, and BCD to seven-segment decoding. Integrated a PWM audio driver for alarm tones and built a comprehensive simulation test bench.
+                  </p>
+                </div>
+                <div class="modal-section">
+                  <h4>Outcome</h4>
+                  <ul>
+                    <li>Robust synchronous design tolerant to switch bouncing and asynchronous resets</li>
+                    <li>Configurable alarm schedules with persistent display states</li>
+                    <li>Documentation and demo for first-year digital logic students</li>
+                  </ul>
+                </div>
+                <div class="modal-gallery">
+                  <img src="./PROJECTS/Logic Systems/LogicSystems_Clock.png" alt="FPGA alarm clock hardware" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-modal" id="modal-rotary-dimmer" role="dialog" aria-modal="true" aria-labelledby="modal-rotary-dimmer-title">
+            <div class="modal-content">
+              <button class="modal-close" aria-label="Close project details">&times;</button>
+              <div class="modal-header">
+                <h3 id="modal-rotary-dimmer-title">Rotary Dimmer Reverse Engineering</h3>
+                <p class="modal-subtitle">Spring 2025 · Manufacturing Technologies</p>
+                <div class="modal-actions">
+                  <a class="modal-action" href="./PROJECTS/Manufacturing%20Technologies/Rapport_Manufacturing_Groupe_1.pdf" download>
+                    <i class="fa-solid fa-file-arrow-down"></i>
+                    Download Report
+                  </a>
+                </div>
+                <p class="modal-tagline">
+                  Teardown and full manufacturing plan for a rotary light dimmer, from materials characterisation to process routing and cost estimation.
+                </p>
+                <div class="modal-meta-tags">
+                  <ul class="tag-list">
+                    <li>reverse engineering</li>
+                    <li>manufacturing</li>
+                    <li>metrology</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="modal-body">
+                <div class="modal-section">
+                  <h4>Scope</h4>
+                  <p>
+                    Analyse the construction of a commercial rotary dimmer: identify materials, tolerances, and functional constraints, then recreate production-ready drawings and process steps for EPFL workshops.
+                  </p>
+                </div>
+                <div class="modal-section">
+                  <h4>Process</h4>
+                  <p>
+                    Conducted dimensional metrology, microscopy, and hardness tests. Modelled the mechanism in CAD, selected manufacturing processes (injection moulding, metal stamping, PCB assembly), and compiled a bill of materials with cost benchmarking.
+                  </p>
+                </div>
+                <div class="modal-section">
+                  <h4>Deliverables</h4>
+                  <ul>
+                    <li>Detailed CAD assembly with exploded views and tolerance stack-up</li>
+                    <li>Process routing sheet, quality controls, and risk analysis</li>
+                    <li>Recommendations for sustainability and repairability improvements</li>
+                  </ul>
+                </div>
+                <div class="modal-gallery">
+                  <img src="./PROJECTS/Manufacturing Technologies/Manufacturing_1.png" alt="Functional diagram of the rotary dimmer" />
+                  <img src="./PROJECTS/Manufacturing Technologies/Manufacturing_2.png" alt="Disassembled components of the rotary dimmer" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-modal" id="modal-orange-press" role="dialog" aria-modal="true" aria-labelledby="modal-orange-press-title">
+            <div class="modal-content">
+              <button class="modal-close" aria-label="Close project details">&times;</button>
+              <div class="modal-hero">
+                <img src="./PROJECTS/images/Product_Solution.png" alt="Orange press concept rendering" />
+              </div>
+              <div class="modal-header">
+                <h3 id="modal-orange-press-title">Orange Juice Press Mechanism</h3>
+                <p class="modal-subtitle">Spring 2022 · Mechanical Construction</p>
+                <div class="modal-actions">
+                  <a class="modal-action" href="./PROJECTS/Mechanical%20Construction/Rapport%20Constru%20Meca%20Final.pdf" download>
+                    <i class="fa-solid fa-file-arrow-down"></i>
+                    Download Report
+                  </a>
+                </div>
+                <p class="modal-tagline">
+                  Team project to engineer an ergonomic citrus press delivering high extraction yield with safe operation and manufacturable components.
+                </p>
+                <div class="modal-meta-tags">
+                  <ul class="tag-list">
+                    <li>mechanism design</li>
+                    <li>cad</li>
+                    <li>prototyping</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="modal-body">
+                <div class="modal-section">
+                  <h4>Challenge</h4>
+                  <p>
+                    Replace lever-style presses with a compact device suitable for hospitality use. Requirements included ergonomic operation, easy cleaning, and robustness for high throughput.
+                  </p>
+                </div>
+                <div class="modal-section">
+                  <h4>Engineering</h4>
+                  <p>
+                    Evaluated linkage architectures, created SolidWorks assemblies, and ran FEA to validate stress on arms and bearings. Prepared manufacturing drawings for CNC milled aluminium and 3D printed polymer components.
+                  </p>
+                </div>
+                <div class="modal-section">
+                  <h4>Results</h4>
+                  <ul>
+                    <li>Extraction efficiency surpassing 85% of manual benchmark</li>
+                    <li>Tool-less disassembly for sanitation and maintenance</li>
+                    <li>Costed bill of materials and assembly instructions</li>
+                  </ul>
+                </div>
+                <div class="modal-gallery">
+                  <img src="./PROJECTS/Mechanical Construction/MechanicalConstru.png" alt="Exploded view of the orange press mechanism" />
+                  <img src="./PROJECTS/Mechanical Construction/MechanicalConstru_2.png" alt="Manufactured prototype of the orange press mechanism" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-modal" id="modal-dynabal" role="dialog" aria-modal="true" aria-labelledby="modal-dynabal-title">
+            <div class="modal-content">
+              <button class="modal-close" aria-label="Close project details">&times;</button>
+              <div class="modal-header">
+                <h3 id="modal-dynabal-title">Dynabal Balanced Dynamometer</h3>
+                <p class="modal-subtitle">Fall 2023 · Mechanism Design II</p>
+                <div class="modal-actions">
+                  <a class="modal-action" href="./PROJECTS/Mechanisms%20Design/Report.pdf" download>
+                    <i class="fa-solid fa-file-arrow-down"></i>
+                    Download Report
+                  </a>
+                </div>
+                <p class="modal-tagline">
+                  A compliant dynamometer that measures torque on rotating shafts with flexure compensation and modular sensor packs.
+                </p>
+                <div class="modal-meta-tags">
+                  <ul class="tag-list">
+                    <li>mechanisms</li>
+                    <li>mechatronics</li>
+                    <li>testing</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="modal-body">
+                <div class="modal-section">
+                  <h4>Brief</h4>
+                  <p>
+                    Design a measurement rig capable of capturing torque and vibrations on flexible shafts for marine applications while remaining portable and easy to calibrate.
+                  </p>
+                </div>
+                <div class="modal-section">
+                  <h4>Design Highlights</h4>
+                  <p>
+                    Developed a flexure-based preload system with angular contact bearings to isolate measurement axes. Modelled torsional compliance and validated sensitivity with MATLAB simulations. Integrated strain gauges with temperature compensation.
+                  </p>
+                </div>
+                <div class="modal-section">
+                  <h4>Deliverables</h4>
+                  <ul>
+                    <li>Schematics, wiring, and calibration workflow</li>
+                    <li>Assembly instructions and maintenance procedures</li>
+                    <li>Failure mode analysis for endurance testing</li>
+                  </ul>
+                </div>
+                <div class="modal-gallery">
+                  <img src="./PROJECTS/Mechanisms Design/MechanismsDesign_1.PNG" alt="Dynabal dynamometer CAD assembly" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-modal" id="modal-mario" role="dialog" aria-modal="true" aria-labelledby="modal-mario-title">
+            <div class="modal-content">
+              <button class="modal-close" aria-label="Close project details">&times;</button>
+              <div class="modal-hero">
+                <img src="./PROJECTS/images/Microcontroller_Cover.jpg" alt="Microcontroller Mario game setup" />
+              </div>
+              <div class="modal-header">
+                <h3 id="modal-mario-title">Homemade Mario LED Matrix Game</h3>
+                <p class="modal-subtitle">Spring 2022 · Microcontrollers</p>
+                <div class="modal-actions">
+                  <a class="modal-action" href="https://github.com/BenBahu/Microcontroller---Super-Mario" target="_blank" rel="noreferrer">
+                    <i class="fa-brands fa-github"></i>
+                    View Repository
+                  </a>
+                  <a class="modal-action" href="./PROJECTS/Microcontrollers/Rapport_Projet_Microcontroleurs.pdf" download>
+                    <i class="fa-solid fa-file-arrow-down"></i>
+                    Download Report
+                  </a>
+                </div>
+                <p class="modal-tagline">
+                  Retro inspired Mario game implemented on an ATmega128 with an 8×8 LED matrix, custom sound, and joystick control.
+                </p>
+                <div class="modal-meta-tags">
+                  <ul class="tag-list">
+                    <li>microcontrollers</li>
+                    <li>embedded c</li>
+                    <li>game dev</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="modal-body">
+                <div class="modal-section">
+                  <h4>Challenge</h4>
+                  <p>
+                    Create a complete interactive game using limited microcontroller resources: minimal RAM, no frame buffer, and a simple LED matrix display.
+                  </p>
+                </div>
+                <div class="modal-section">
+                  <h4>Implementation</h4>
+                  <p>
+                    Programmed time-sliced display refresh, collision detection, and physics in C. Added PCM audio output through a timer interrupt and built a level editor for quick iteration. Optimised the code to fit within flash and SRAM limits.
+                  </p>
+                </div>
+                <div class="modal-section">
+                  <h4>Takeaways</h4>
+                  <ul>
+                    <li>Real-time constraints and interrupt-driven programming</li>
+                    <li>Hardware multiplexing for LED matrices</li>
+                    <li>Edge-case testing and user playtesting loops</li>
+                  </ul>
+                </div>
+                <div class="modal-gallery">
+                  <img src="./PROJECTS/Microcontrollers/Microcontroller_1.png" alt="Gameplay running on the LED matrix" />
+                  <img src="./PROJECTS/Microcontrollers/Microcontroller_2.png" alt="Hardware layout of the Mario LED matrix game" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-modal" id="modal-mobile-robotics" role="dialog" aria-modal="true" aria-labelledby="modal-mobile-robotics-title">
+            <div class="modal-content">
+              <button class="modal-close" aria-label="Close project details">&times;</button>
+              <div class="modal-hero">
+                <img src="./PROJECTS/images/MobileRobotics_Cover.png" alt="Thymio II robotics stack overview" />
+              </div>
+              <div class="modal-header">
+                <h3 id="modal-mobile-robotics-title">Autonomous Mobile Robotics Stack</h3>
+                <p class="modal-subtitle">Fall 2024 · Basics of Mobile Robotics</p>
+                <div class="modal-actions">
+                  <a class="modal-action" href="https://github.com/BenBahu/Robotics---Robot-Control-with-Computer-Vision" target="_blank" rel="noreferrer">
+                    <i class="fa-brands fa-github"></i>
+                    View Repository
+                  </a>
+                  <a class="modal-action" href="./PROJECTS/Mobile%20Robotics/MobileRobotics_Assignement_GS.pdf" download>
+                    <i class="fa-solid fa-file-arrow-down"></i>
+                    Download Report
+                  </a>
+                </div>
+                <p class="modal-tagline">
+                  End-to-end autonomy stack for the Thymio II platform covering perception, SLAM, motion planning, and control for indoor navigation challenges.
+                </p>
+                <div class="modal-meta-tags">
+                  <ul class="tag-list">
+                    <li>slam</li>
+                    <li>navigation</li>
+                    <li>control</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="modal-body">
+                <div class="modal-section">
+                  <h4>Assignment</h4>
+                  <p>
+                    Deliver modular autonomy blocks to compete in capture-the-flag style indoor missions. Each subsystem (vision, localisation, motion) had to be designed, validated, and integrated by the team.
+                  </p>
+                </div>
+                <div class="modal-section">
+                  <h4>Solution</h4>
+                  <p>
+                    Implemented AprilTag-based localisation fused with wheel odometry via an Extended Kalman Filter. Built a global planner using A* on occupancy grids and a local dynamic window planner for obstacle avoidance. Vision pipeline included colour segmentation and blob tracking for objectives.
+                  </p>
+                </div>
+                <div class="modal-section">
+                  <h4>Tooling</h4>
+                  <ul>
+                    <li>ROS1, OpenCV, Python, C++</li>
+                    <li>Simulation in Webots and on-hardware tuning</li>
+                    <li>CI pipeline for unit and hardware-in-the-loop tests</li>
+                  </ul>
+                </div>
+                <div class="modal-gallery">
+                  <img src="./PROJECTS/images/MobileRobotics_Maping.png" alt="SLAM mapping output for the robotics project" />
+                  <img src="./PROJECTS/images/MobileRobotics_Path.png" alt="Planned path and trajectories for the Thymio robot" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-modal" id="modal-autonomous-mpc" role="dialog" aria-modal="true" aria-labelledby="modal-autonomous-mpc-title">
+            <div class="modal-content">
+              <button class="modal-close" aria-label="Close project details">&times;</button>
+              <div class="modal-hero">
+                <img src="./PROJECTS/images/ModelPredictiveControl_Cover.jpeg" alt="Autonomous highway MPC simulation" />
+              </div>
+              <div class="modal-header">
+                <h3 id="modal-autonomous-mpc-title">Autonomous Highway MPC</h3>
+                <p class="modal-subtitle">Spring 2025 · Model Predictive Control</p>
+                <div class="modal-actions">
+                  <a class="modal-action" href="https://github.com/BenBahu/MPC---Autonomous-Car-Control" target="_blank" rel="noreferrer">
+                    <i class="fa-brands fa-github"></i>
+                    View Repository
+                  </a>
+                  <a class="modal-action" href="./PROJECTS/Model%20Predictive%20Control/ModelPredictiveControl_Report_GS.pdf" download>
+                    <i class="fa-solid fa-file-arrow-down"></i>
+                    Download Report
+                  </a>
+                </div>
+                <p class="modal-tagline">
+                  Highway-scale MPC framework that manages lane keeping, speed, and safety constraints with preview of surrounding traffic.
+                </p>
+                <div class="modal-meta-tags">
+                  <ul class="tag-list">
+                    <li>mpc</li>
+                    <li>control</li>
+                    <li>autonomous driving</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="modal-body">
+                <div class="modal-section">
+                  <h4>Problem</h4>
+                  <p>
+                    Model and control an autonomous vehicle driving on highways while satisfying comfort and safety constraints, including collision avoidance and acceleration bounds.
+                  </p>
+                </div>
+                <div class="modal-section">
+                  <h4>Approach</h4>
+                  <p>
+                    Built a linearised bicycle model with preview horizon; implemented a nonlinear MPC solved via CasADi. Added soft constraints for lane boundaries, front vehicle following, and fuel efficiency. Simulated with MATLAB/Simulink before deploying in Python.
+                  </p>
+                </div>
+                <div class="modal-section">
+                  <h4>Outputs</h4>
+                  <ul>
+                    <li>Scenario dashboard for traffic merging and braking events</li>
+                    <li>Performance evaluation across varying horizon lengths</li>
+                    <li>Documentation for future autonomous control labs</li>
+                  </ul>
+                </div>
+                <div class="modal-gallery">
+                  <img src="./PROJECTS/images/ModelPredictiveControl_Dashboard.jpeg" alt="Dashboard for the highway MPC simulation" />
+                  <img src="./PROJECTS/images/ModelPredictiveControl_Flow.jpeg" alt="Control flow diagram for the MPC system" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-modal" id="modal-planet-donut" role="dialog" aria-modal="true" aria-labelledby="modal-planet-donut-title">
+            <div class="modal-content">
+              <button class="modal-close" aria-label="Close project details">&times;</button>
+              <div class="modal-hero">
+                <img src="./PROJECTS/images/PlanetDonut_Cover.png" alt="Planet Donut resource simulator artwork" />
+              </div>
+              <div class="modal-header">
+                <h3 id="modal-planet-donut-title">Planet Donut Resource Simulator</h3>
+                <p class="modal-subtitle">Fall 2023 · Programming Oriented Project</p>
+                <div class="modal-actions">
+                  <a class="modal-action" href="https://github.com/BenBahu/Programming---Planet-Donut" target="_blank" rel="noreferrer">
+                    <i class="fa-brands fa-github"></i>
+                    View Repository
+                  </a>
+                  <a class="modal-action" href="./PROJECTS/Planet%20Donut/PlanetDonut_Report_GS.pdf" download>
+                    <i class="fa-solid fa-file-arrow-down"></i>
+                    Download Report
+                  </a>
+                </div>
+                <p class="modal-tagline">
+                  Resource strategy simulator that balances mining and logistics robots across a planetary grid using reinforcement learning agents.
+                </p>
+                <div class="modal-meta-tags">
+                  <ul class="tag-list">
+                    <li>simulation</li>
+                    <li>reinforcement learning</li>
+                    <li>c++</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="modal-body">
+                <div class="modal-section">
+                  <h4>Mission</h4>
+                  <p>
+                    Develop a simulation that coordinates drilling and transport robots on a toroidal planet. The objective was to sustain resource extraction while maintaining energy networks and avoiding congestion.
+                  </p>
+                </div>
+                <div class="modal-section">
+                  <h4>Implementation</h4>
+                  <p>
+                    Wrote a performant C++ engine with cellular automata for terrain and a policy gradient agent to allocate tasks. Added stochastic events (storms, resource depletion) and dashboards for supply chain KPIs.
+                  </p>
+                </div>
+                <div class="modal-section">
+                  <h4>Key Learnings</h4>
+                  <ul>
+                    <li>Systems design for multi-agent RL</li>
+                    <li>Resource balancing heuristics and RL exploration tuning</li>
+                    <li>Testing infrastructure for long-running simulations</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-modal" id="modal-rl-benchmark" role="dialog" aria-modal="true" aria-labelledby="modal-rl-benchmark-title">
+            <div class="modal-content">
+              <button class="modal-close" aria-label="Close project details">&times;</button>
+              <div class="modal-hero">
+                <img src="./PROJECTS/Reinforcement Learning/ReinfoLearning_Cover.png" alt="Reinforcement learning benchmark results" />
+              </div>
+              <div class="modal-header">
+                <h3 id="modal-rl-benchmark-title">Deep RL Algorithm Benchmark</h3>
+                <p class="modal-subtitle">Fall 2024 · Applied Deep RL Project</p>
+                <div class="modal-actions">
+                  <a class="modal-action" href="https://github.com/BenBahu/RL---Testing-Algorithms-On-Environments" target="_blank" rel="noreferrer">
+                    <i class="fa-brands fa-github"></i>
+                    View Repository
+                  </a>
+                  <a class="modal-action" href="./PROJECTS/Reinforcement%20Learning/RL_report.pdf" download>
+                    <i class="fa-solid fa-file-arrow-down"></i>
+                    Download Report
+                  </a>
+                </div>
+                <p class="modal-tagline">
+                  Comparative study of DQN, PPO, SAC, and TD3 on OpenAI Gym environments with emphasis on stability and sample efficiency.
+                </p>
+                <div class="modal-meta-tags">
+                  <ul class="tag-list">
+                    <li>reinforcement learning</li>
+                    <li>benchmarking</li>
+                    <li>openai gym</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="modal-body">
+                <div class="modal-section">
+                  <h4>Goal</h4>
+                  <p>
+                    Evaluate modern deep RL algorithms across CartPole-v1, Pendulum-v1, and MountainCarContinuous-v0, capturing learning speed, stability, and computational cost.
+                  </p>
+                </div>
+                <div class="modal-section">
+                  <h4>Method</h4>
+                  <p>
+                    Implemented agents in PyTorch with shared utilities for replay buffers, exploration schedules, and normalisation. Ran 30 seeds per algorithm and plotted confidence intervals to compare convergence.
+                  </p>
+                </div>
+                <div class="modal-section">
+                  <h4>Insights</h4>
+                  <ul>
+                    <li>SAC delivered fastest convergence on continuous control with low variance</li>
+                    <li>PPO exhibited robust stability but higher sample consumption</li>
+                    <li>Automated hyper-parameter sweeps and logging with Weights &amp; Biases</li>
+                  </ul>
+                </div>
+                <div class="modal-gallery">
+                  <img src="./PROJECTS/Reinforcement Learning/ReinfoLearning_1.png" alt="Reinforcement learning benchmark results" />
+                  <img src="./PROJECTS/Reinforcement Learning/Poster.png" alt="Poster summarising the deep RL benchmark" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-modal" id="modal-power-grid" role="dialog" aria-modal="true" aria-labelledby="modal-power-grid-title">
+            <div class="modal-content">
+              <button class="modal-close" aria-label="Close project details">&times;</button>
+              <div class="modal-hero modal-hero--compact">
+                <img src="./PROJECTS/Semester Project 1/SemProject_Cover.png" alt="Power grid vulnerability analysis cover" />
+              </div>
+              <div class="modal-header">
+                <h3 id="modal-power-grid-title">Power Grid Vulnerability Analysis</h3>
+                <p class="modal-subtitle">Spring 2025 · Semester Project</p>
+                <div class="modal-actions">
+                  <a class="modal-action" href="https://github.com/BenBahu/ELEC-RL---Grid-Analysis" target="_blank" rel="noreferrer">
+                    <i class="fa-brands fa-github"></i>
+                    View Repository
+                  </a>
+                  <a class="modal-action" href="./PROJECTS/Semester%20Project%201/Report_PDS.pdf" download>
+                    <i class="fa-solid fa-file-arrow-down"></i>
+                    Download Report
+                  </a>
+                </div>
+                <p class="modal-tagline">
+                  Reinforcement learning agents stress-test transmission grids by discovering high-risk contingency scenarios beyond traditional N-1 analysis.
+                </p>
+                <div class="modal-meta-tags">
+                  <ul class="tag-list">
+                    <li>power systems</li>
+                    <li>risk analysis</li>
+                    <li>reinforcement learning</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="modal-body">
+                <div class="modal-section">
+                  <h4>Context</h4>
+                  <p>
+                    Work with the IMOS lab to evaluate grid resilience using reinforcement learning. Agents needed to identify line outages that could propagate cascading failures in Swiss transmission networks.
+                  </p>
+                </div>
+                <div class="modal-section">
+                  <h4>Solution</h4>
+                  <p>
+                    Built a scalable environment that interfaces with power flow solvers. Trained agents using Monte Carlo tree search and policy gradients to maximise load shed. Deployed dashboards for system operators to replay failure chains and design mitigation strategies.
+                  </p>
+                </div>
+                <div class="modal-section">
+                  <h4>Deliverables</h4>
+                  <ul>
+                    <li>Comprehensive report and presentation for grid operators</li>
+                    <li>Toolkit for scenario generation and ranking</li>
+                    <li>Recommendations for sensor placement and contingency plans</li>
+                  </ul>
+                </div>
+                <div class="modal-gallery">
+                  <img src="./PROJECTS/Semester Project 1/SemProject_1.png" alt="Visualisation of critical paths in the power grid" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-modal" id="modal-pitot" role="dialog" aria-modal="true" aria-labelledby="modal-pitot-title">
+            <div class="modal-content">
+              <button class="modal-close" aria-label="Close project details">&times;</button>
+              <div class="modal-hero">
+                <img src="./PROJECTS/Wireless Sensors/Wireless_Cover.png" alt="Wireless Pitot probe measurement setup" />
+              </div>
+              <div class="modal-header">
+                <h3 id="modal-pitot-title">Wireless Pitot Probe Platform</h3>
+                <p class="modal-subtitle">Spring 2024 · Wireless Sensor Practicals</p>
+                <div class="modal-actions">
+                  <a class="modal-action" href="./PROJECTS/Wireless%20Sensors/Wireless.pdf" download>
+                    <i class="fa-solid fa-file-arrow-down"></i>
+                    Download Report
+                  </a>
+                </div>
+                <p class="modal-tagline">
+                  Wireless sensor platform capturing airflow data via a Pitot probe with on-board calibration and low-power telemetry.
+                </p>
+                <div class="modal-meta-tags">
+                  <ul class="tag-list">
+                    <li>sensor design</li>
+                    <li>wireless</li>
+                    <li>aerodynamics</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="modal-body">
+                <div class="modal-section">
+                  <h4>Mission</h4>
+                  <p>
+                    Produce a wearable-friendly instrument to map airflow around prototypes. Requirements: accurate pressure differentials, wireless streaming, and battery autonomy of at least eight hours.
+                  </p>
+                </div>
+                <div class="modal-section">
+                  <h4>Implementation</h4>
+                  <p>
+                    Integrated differential pressure sensors with STM32 microcontroller, implemented Kalman filtering, and transmitted data via BLE to a Python dashboard. Devised calibration routines and automatic sensor zeroing.
+                  </p>
+                </div>
+                <div class="modal-section">
+                  <h4>Outcome</h4>
+                  <ul>
+                    <li>3D-printed housing with sealed channels for accurate pressure capture</li>
+                    <li>Cloud-ready dataset with tagging and export for CFD comparison</li>
+                    <li>Energy budget meeting eight-hour autonomy target</li>
+                  </ul>
+                </div>
+                <div class="modal-gallery">
+                  <img src="./PROJECTS/Wireless Sensors/Wireless_1.png" alt="Concept sketch of the wireless Pitot probe" />
+                  <img src="./PROJECTS/Wireless Sensors/Wireless_2.png" alt="Wireless Pitot probe prototype and electronics" />
+                  <img src="./PROJECTS/Wireless Sensors/Wireless_3.png" alt="Data capture using the wireless Pitot platform" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills" class="skills">
+        <div class="section-heading">
+          <h2 data-i18n="skills.title" data-i18n-html="true">Skills and Tools</h2>
+        </div>
+        <div class="skills-grid">
+          <div class="skills-list">
+            <h3 data-i18n="skills.tools.title">Tools</h3>
+            <dl>
+              <dt data-i18n="skills.tools.programmingTitle">Programming Languages</dt>
+              <dd>Python, C/C++, MATLAB, HTML, CSS, Java, Assembly</dd>
+
+              <dt data-i18n="skills.tools.roboticsTitle">Robotics &amp; Control</dt>
+              <dd>ROS, Simulink, Model Predictive Control, SLAM, Path Planning, Sensor Fusion, Computer Vision</dd>
+
+              <dt data-i18n="skills.tools.mlTitle">Machine Learning &amp; AI</dt>
+              <dd>TensorFlow, PyTorch, Scikit-learn, NumPy, Pandas, Deep Learning, Supervised &amp; Unsupervised Learning, Reinforcement Learning</dd>
+
+              <dt data-i18n="skills.tools.cadTitle">CAD &amp; Design</dt>
+              <dd>SolidWorks, CATIA, AutoCAD, AutoDesk Fusion, Cinema 4D</dd>
+
+              <dt data-i18n="skills.tools.electronicsTitle">Electronics &amp; Embedded</dt>
+              <dd>Arduino, STM32, Raspberry Pi, FPGA, LTSpice, Oscilloscopes</dd>
+
+              <dt data-i18n="skills.tools.manufacturingTitle">Manufacturing &amp; Fabrication</dt>
+              <dd>CNC Machining, 3D Printing, PCB Design, Microfabrication</dd>
+
+              <dt data-i18n="skills.tools.devTitle">Development Tools</dt>
+              <dd>Git, GitHub, VS Code, Jupyter, Docker, Linux</dd>
+
+              <dt data-i18n="skills.tools.dataTitle">Data Analysis &amp; Visualization</dt>
+              <dd>Matplotlib, Plotly, Statistical Analysis, Data Processing</dd>
+
+              <dt data-i18n="skills.tools.cleanroomTitle">Cleanroom Techniques</dt>
+              <dd data-i18n="skills.tools.cleanroomList">
+                Cleaning &amp; Surface Activation (Tepla300, Tepla Giga-batch), Coating &amp; Exposure &amp; Development (Sawatec SM-150, Sawatec SM-200), Dry/Wet Etching, Evaporation (EVA760 Z11), Dicing (Disco DAD 321/3221)
+              </dd>
+            </dl>
+          </div>
+
+          <div class="courses">
+            <div class="filter-bar" role="tablist" aria-label="Course filters">
+              <button class="filter-btn active" data-filter="all" data-i18n="skills.courses.filterAll">All</button>
+              <button class="filter-btn" data-filter="applied" data-i18n="skills.courses.filterApplied">Applied</button>
+              <button class="filter-btn" data-filter="theoretical" data-i18n="skills.courses.filterTheoretical">Theoretical</button>
+              <button class="filter-btn" data-filter="business" data-i18n="skills.courses.filterBusiness">Business</button>
+            </div>
+            <ul class="course-list">
+              <li data-category="applied" data-i18n="skills.courses.basicsMobileRobotics">Basics of Mobile Robotics</li>
+              <li data-category="applied" data-i18n="skills.courses.basicsManipulation">Basics of Robotics for Manipulation</li>
+              <li data-category="applied theoretical" data-i18n="skills.courses.machineLearning">Machine Learning I</li>
+              <li data-category="applied theoretical" data-i18n="skills.courses.modelPredictiveControl">Model Predictive Control</li>
+              <li data-category="applied" data-i18n="skills.courses.roboticsPracticals">Robotics Practicals</li>
+              <li data-category="applied" data-i18n="skills.courses.roboticsProject">Robotics Project I</li>
+              <li data-category="applied" data-i18n="skills.courses.motorControl">Motor Embedded Control</li>
+              <li data-category="applied theoretical" data-i18n="skills.courses.deepLearning">Deep Learning</li>
+              <li data-category="applied theoretical" data-i18n="skills.courses.imageProcessing">Image Processing I</li>
+              <li data-category="applied" data-i18n="skills.courses.microNanoRobotics">Micro/Nano Robotics</li>
+              <li data-category="applied theoretical" data-i18n="skills.courses.networkedControl">Networked Control Systems</li>
+              <li data-category="applied theoretical" data-i18n="skills.courses.reinforcementLearning">Reinforcement Learning</li>
+              <li data-category="applied business" data-i18n="skills.courses.logistics">Logistics and Demand Analysis</li>
+              <li data-category="business" data-i18n="skills.courses.projectManagement">Project Management and Risk Analysis</li>
+              <li data-category="business" data-i18n="skills.courses.finance">Principles of Finance</li>
+              <li data-category="applied theoretical" data-i18n="skills.courses.actuators">Electromagnetic Actuators and Systems I-II</li>
+              <li data-category="applied theoretical" data-i18n="skills.courses.automaticControl">Automatic Control and Digital Regulation</li>
+              <li data-category="theoretical" data-i18n="skills.courses.signalsSystems">Signals and Systems I-II</li>
+              <li data-category="theoretical" data-i18n="skills.courses.opticalEngineering">Optical Engineering</li>
+              <li data-category="theoretical" data-i18n="skills.courses.semiconductorPhysics">Physics of Semiconductor Devices</li>
+              <li data-category="applied" data-i18n="skills.courses.embeddedSystems">Embedded Systems and Robotics</li>
+              <li data-category="applied" data-i18n="skills.courses.sensors">Sensors</li>
+              <li data-category="applied" data-i18n="skills.courses.manufacturingTech">Manufacturing Technologies</li>
+              <li data-category="applied" data-i18n="skills.courses.microfabrication">Microfabrication Technologies and Practicals</li>
+              <li data-category="applied" data-i18n="skills.courses.wirelessSensors">Wireless Sensor Practicals</li>
+              <li data-category="applied" data-i18n="skills.courses.mechanismDesign">Mechanism Design I-II</li>
+              <li data-category="applied" data-i18n="skills.courses.analogDigital">Analog and Digital Electronics I-II</li>
+              <li data-category="applied" data-i18n="skills.courses.microcontrollers">Microcontrollers</li>
+              <li data-category="applied theoretical" data-i18n="skills.courses.designExperiments">Design of Experiments</li>
+              <li data-category="theoretical" data-i18n="skills.courses.numericalAnalysis">Numerical Analysis and Optimization</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="contact">
+        <div class="section-heading">
+          <h2 data-i18n="contact.title" data-i18n-html="true">Get In Touch</h2>
+        </div>
+        <p class="contact-lead" data-i18n="contact.lead">
+          I'm always open to discussing new projects, opportunities, or collaborations. Feel free to reach out through any of the channels below.
+        </p>
+        <div class="contact-actions">
+          <a class="btn solid" href="mailto:benjamin.bahurel@gmail.com">
+            <i class="fa-solid fa-envelope"></i>
+            <span data-i18n="contact.email">Email</span>
+          </a>
+          <a class="btn ghost" href="https://www.linkedin.com/in/benjamin-bahurel-862736390/" target="_blank" rel="noreferrer">
+            <i class="fa-brands fa-linkedin"></i>
+            <span data-i18n="contact.linkedin">LinkedIn</span>
+          </a>
+          <a class="btn ghost" href="https://github.com/BenBahu?tab=repositories" target="_blank" rel="noreferrer">
+            <i class="fa-brands fa-github"></i>
+            <span data-i18n="contact.github">GitHub</span>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p data-i18n="footer.copy">© 2025 Benjamin Bahurel. All rights reserved.</p>
+    </footer>
+
+    <script src="./script.js" defer></script>
+  </body>
+</html>
+
+
