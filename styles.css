@@ -413,7 +413,7 @@ section {
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.8rem;
 }
 
@@ -478,14 +478,29 @@ section {
 .project-media {
   position: absolute;
   inset: 0;
-  background: var(--bg) center/cover no-repeat;
-  filter: grayscale(100%);
-  transition: transform 0.45s ease, filter 0.45s ease;
+  background: var(--bg) center/contain no-repeat;
+  transition: transform 0.45s ease;
   z-index: 0;
 }
 
+/* Apply cover sizing to specific projects (images fill the card) */
+.project-card[data-modal="modal-vocy"] .project-media,
+.project-card[data-modal="modal-ml4pm"] .project-media,
+.project-card[data-modal="modal-epuck"] .project-media,
+.project-card[data-modal="modal-fpga-alarm"] .project-media,
+.project-card[data-modal="modal-rotary-dimmer"] .project-media,
+.project-card[data-modal="modal-religious-hate-speech"] .project-media,
+.project-card[data-modal="modal-orange-press"] .project-media,
+.project-card[data-modal="modal-dynabal"] .project-media,
+.project-card[data-modal="modal-mobile-robotics"] .project-media,
+.project-card[data-modal="modal-planet-donut"] .project-media,
+.project-card[data-modal="modal-rl-benchmark"] .project-media,
+.project-card[data-modal="modal-power-grid"] .project-media,
+.project-card[data-modal="modal-pitot"] .project-media {
+  background-size: 70%;
+}
+
 .project-card:hover .project-media {
-  filter: grayscale(0%);
   transform: scale(1.05);
 }
 
@@ -783,6 +798,18 @@ body.modal-open {
   padding: 0.75rem;
 }
 
+#modal-semester-project-2 .modal-gallery img {
+  max-height: 800px;
+}
+
+#modal-power-grid .modal-gallery img {
+  max-height: 800px;
+}
+
+#modal-rl-benchmark .modal-gallery img {
+  max-height: 800px;
+}
+
 .gallery-image--compact {
   max-height: 160px;
   object-fit: contain;
@@ -984,7 +1011,7 @@ body.modal-open {
   }
 
   .projects-grid {
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: 1fr;
   }
 
   .header-actions {
